@@ -1,0 +1,1 @@
+# gostay-booking-platform
