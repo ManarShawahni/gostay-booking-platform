@@ -3,10 +3,8 @@ export interface LoginRequest {
   password: string;
 }
 
-export interface LoginResponse {
-  token: string;
-  userType: 'Admin' | 'User';
-}
+export type LoginResponse = string;
+
 
 export interface User {
   username: string;
@@ -14,9 +12,14 @@ export interface User {
 }
 
 export interface AuthState {
-  isAuthenticated: boolean;  // Is user logged in?
-  user: User | null;          // User info 
-  token: string | null;       // JWT token
-  loading: boolean;           // Are we currently logging in?
-  error: string | null;       // Any login error message
+  isAuthenticated: boolean;
+  user: User | null;
+  token: string | null;
+  loading: boolean;
+  error: string | null;
+}
+
+export interface AuthContextType extends AuthState {
+  login: (credentials: LoginRequest) => Promise<void>;
+  logout: () => void;
 }
