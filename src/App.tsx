@@ -1,68 +1,42 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
+import styles from "./styles/AppLayout.module.css";
 
 function App() {
+  const location = useLocation();
+
+  const hideLayout = location.pathname === "/login";
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Navigation Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-1">
-              <span className="text-2xl font-bold text-blue-600">Go</span>
-              <span className="text-2xl font-bold text-orange-500">Stay</span>
+    <div className={styles.appContainer}>
+      {!hideLayout && (
+        <header className={styles.header}>
+          <div className={styles.navContainer}>
+            <Link to="/" className={styles.logo}>
+              <span className={styles.logoPurple}>Go</span>
+              <span className={styles.logoCoral}>Stay</span>
             </Link>
 
-            {/* Navigation Links */}
-            <nav className="flex gap-6">
-              <Link
-                to="/"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                to="/search"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                Search
-              </Link>
-              <Link
-                to="/admin"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                Admin
-              </Link>
-              <Link
-                to="/login"
-                className="text-gray-700 hover:text-blue-600 transition-colors"
-              >
-                Login
-              </Link>
+            <nav className={styles.links}>
+              <Link to="/" className={styles.link}>Home</Link>
+              <Link to="/search" className={styles.link}>Search</Link>
+              <Link to="/admin" className={styles.link}>Admin</Link>
+              <Link to="/login" className={styles.link}>Login</Link>
             </nav>
           </div>
-        </div>
-      </header>
+        </header>
+      )}
 
-      {/* Page Content */}
-      <main className="flex-1">
+      <main className={styles.mainNoBg}>
         <Outlet />
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8 mt-auto">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <p className="text-lg font-semibold mb-2">GoStay</p>
-            <p className="text-gray-400 text-sm">
-              Go Anywhere. Stay Everywhere.
-            </p>
-            <p className="text-gray-500 text-xs mt-4">
-              &copy; {new Date().getFullYear()} GoStay. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      {!hideLayout && (
+        <footer className={styles.footer}>
+          <p className={styles.footerTitle}>GoStay</p>
+          <p className={styles.footerSub}>Go Anywhere. Stay Everywhere.</p>
+          <p className={styles.footerCopy}>© {new Date().getFullYear()} GoStay. All rights reserved.</p>
+        </footer>
+      )}
     </div>
   );
 }

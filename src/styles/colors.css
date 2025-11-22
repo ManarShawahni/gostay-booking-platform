@@ -1,0 +1,11 @@
+:root {
+  --purple: #C957A1;
+  --coral: #FF6B6B;
+  --charcoal: #2D3748;
+
+  --offWhite: #FAFAFA;
+  --amber: #FBBF24;
+  --mint: #34D399;
+
+  --gradient-main: linear-gradient(135deg, #7C3AED, #FF6B6B);
+}

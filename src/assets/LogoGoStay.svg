@@ -1,0 +1,20 @@
+<svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon Background -->
+  <rect width="40" height="40" rx="10" fill="url(#gradient)"/>
+  
+  <!-- Location pin -->
+  <path d="M20 5C14.5 5 10 9.5 10 15C10 22.5 20 35 20 35C20 35 30 22.5 30 15C30 9.5 25.5 5 20 5Z" fill="white"/>
+  
+  <!-- Clear G with arrow -->
+  <path d="M20 9C17.07 9 14.7 11.37 14.7 14.3C14.7 17.23 17.07 19.6 20 19.6C20.93 19.6 21.8 19.35 22.55 18.9V17.1H20V15.6H24.3V19.9C23.1 21.1 21.63 22 20 22C16.02 22 12.8 18.78 12.8 14.8C12.8 10.82 16.02 7.6 20 7.6C22 7.6 23.78 8.5 25 9.9L23.6 11.1C22.76 10.14 21.48 9.5 20 9.5V9Z" fill="url(#gradient)"/>
+  
+  <!-- Text -->
+  <text x="48" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="600" fill="#2D3748">Go<tspan fill="url(#gradient)">Stay</tspan></text>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#FF6B6B"/>
+    </linearGradient>
+  </defs>
+</svg>
