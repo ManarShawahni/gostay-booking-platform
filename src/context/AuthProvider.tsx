@@ -19,10 +19,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     error: null,
   });
 
-  // Auto-login from localStorage on page reload
   useEffect(() => {
-    const savedToken = localStorage.getItem("authToken");
-    const savedUser = localStorage.getItem("authUser");
+    const savedToken = localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
+
+    const savedUser = localStorage.getItem("authUser") || sessionStorage.getItem("authUser");
 
     if (savedToken && savedUser) {
       setState({
@@ -36,7 +36,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   // Login
-const login = async (credentials: LoginRequest): Promise<LoginResponse | null> => {
+const login = async (
+  credentials: LoginRequest, 
+  rememberMe: boolean = false
+): Promise<LoginResponse | null> => {
     setState((prev) => ({ ...prev, loading: true, error: null }));
 
     try {
@@ -55,8 +58,13 @@ const login = async (credentials: LoginRequest): Promise<LoginResponse | null> =
         error: null,
       });
 
-      localStorage.setItem("authToken", result.token);
-      localStorage.setItem("authUser", JSON.stringify(user));
+      if (rememberMe) {
+          localStorage.setItem("authToken", result.token);
+          localStorage.setItem("authUser", JSON.stringify(user));
+      } else {
+          sessionStorage.setItem("authToken", result.token);
+          sessionStorage.setItem("authUser", JSON.stringify(user));
+      }
 
       return result;
     } catch (err) {
@@ -76,6 +84,10 @@ const login = async (credentials: LoginRequest): Promise<LoginResponse | null> =
 
   // Logout
   const logout = () => {
+
+    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("authUser");
+
     localStorage.removeItem("authToken");
     localStorage.removeItem("authUser");
 

@@ -13,10 +13,11 @@ const LoginPage = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const result = await login({ username, password });
+    const result = await login({ username, password }, rememberMe);
 
     if (result?.userType === "Admin") navigate("/admin");
     else navigate("/");
@@ -46,6 +47,16 @@ const LoginPage = () => {
               type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
+
+            <label className={styles.rememberRow}>
+              <input
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+                className={styles.checkbox}
+              />
+              <span>Remember me</span>
+            </label>
 
             <Button fullWidth type="submit">
               {loading ? "Signing in..." : "Sign in"}

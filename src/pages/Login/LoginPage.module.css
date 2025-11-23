@@ -112,6 +112,21 @@
     hideCursor 0.1s forwards 5.8s;
 }
 
+.rememberRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 10px 2px;
+  font-size: 14px;
+  color: var(--charcoal);
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+}
+
+
 @keyframes typing {
   from { width: 1; }
   to { width: 100%; }
@@ -147,7 +162,6 @@
   opacity: 0.9;
 }
 
-/* Floating Gradient Animation */
 @keyframes floatGradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
