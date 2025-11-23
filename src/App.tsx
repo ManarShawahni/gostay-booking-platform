@@ -1,10 +1,19 @@
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../src/hooks/useAuth";
 import styles from "./styles/AppLayout.module.css";
 
 function App() {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const { isAuthenticated, logout } = useAuth();
 
   const hideLayout = location.pathname === "/login";
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
+  };
 
   return (
     <div className={styles.appContainer}>
@@ -21,7 +30,20 @@ function App() {
               <Link to="/search" className={styles.link}>Search</Link>
               <Link to="/admin" className={styles.link}>Admin</Link>
               <Link to="/login" className={styles.link}>Login</Link>
+
+            {isAuthenticated ? (
+                <button
+                  onClick={handleLogout}
+                  className={styles.link}
+                  style={{ color: "#FF6B6B", fontWeight: 600 }}
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link to="/login" className={styles.link}>Login</Link>
+              )}
             </nav>
+
           </div>
         </header>
       )}
