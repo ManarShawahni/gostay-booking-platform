@@ -106,6 +106,7 @@ const login = async (
         ...state,
         login,
         logout,
+        isAdmin: state.user?.userType === "Admin"
       }}
     >
       {children}

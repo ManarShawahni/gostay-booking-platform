@@ -24,4 +24,5 @@ export interface AuthState {
 export interface AuthContextType extends AuthState {
   login: (credentials: LoginRequest, rememberMe?: boolean) => Promise<LoginResponse | null>;
   logout: () => void;
+  isAdmin: boolean;
 }
