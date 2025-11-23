@@ -37,5 +37,8 @@ export const authService = {
   logout(): void {
     localStorage.removeItem("authToken");
     localStorage.removeItem("authUser");
+
+    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("authUser");
   },
 };
