@@ -1,6 +1,6 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../src/hooks/useAuth";
 import styles from "./styles/AppLayout.module.css";
+import { useAuth } from "./hooks/useAuth";
 
 function App() {
   const location = useLocation();
@@ -29,7 +29,6 @@ function App() {
               <Link to="/" className={styles.link}>Home</Link>
               <Link to="/search" className={styles.link}>Search</Link>
               <Link to="/admin" className={styles.link}>Admin</Link>
-              <Link to="/login" className={styles.link}>Login</Link>
 
             {isAuthenticated ? (
                 <button
