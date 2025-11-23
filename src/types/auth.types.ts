@@ -3,8 +3,10 @@ export interface LoginRequest {
   password: string;
 }
 
-export type LoginResponse = string;
-
+export interface LoginResponse {
+  token: string;
+  userType: 'Admin' | 'User';
+}
 
 export interface User {
   username: string;
@@ -20,6 +22,7 @@ export interface AuthState {
 }
 
 export interface AuthContextType extends AuthState {
-  login: (credentials: LoginRequest) => Promise<void>;
+  login: (credentials: LoginRequest, rememberMe?: boolean) => Promise<LoginResponse | null>;
   logout: () => void;
+  isAdmin: boolean;
 }

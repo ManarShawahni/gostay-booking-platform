@@ -6,9 +6,11 @@ import {
   AuthState,
   User,
   ApiError,
+  LoginResponse
 } from "../types";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  
   const [state, setState] = useState<AuthState>({
     isAuthenticated: false,
     token: null,
@@ -17,10 +19,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     error: null,
   });
 
-  // Auto-login from localStorage
   useEffect(() => {
-    const savedToken = localStorage.getItem("authToken");
-    const savedUser = localStorage.getItem("authUser");
+    const savedToken = localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
+
+    const savedUser = localStorage.getItem("authUser") || sessionStorage.getItem("authUser");
 
     if (savedToken && savedUser) {
       setState({
@@ -33,33 +35,39 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   }, []);
 
-  // Login function
-  const login = async (credentials: LoginRequest) => {
-    setState((s) => ({ ...s, loading: true, error: null }));
+  // Login
+const login = async (
+  credentials: LoginRequest, 
+  rememberMe: boolean = false
+): Promise<LoginResponse | null> => {
+    setState((prev) => ({ ...prev, loading: true, error: null }));
 
     try {
-      const token = await authService.login(credentials);
-
-      const userType = credentials.username === "admin" ? "Admin" : "User";
+      const result = await authService.login(credentials);
 
       const user: User = {
         username: credentials.username,
-        userType,
+        userType: result.userType,
       };
 
-      // Update state
       setState({
         isAuthenticated: true,
-        token,
+        token: result.token,
         user,
         loading: false,
         error: null,
       });
 
-      // Persist
-      localStorage.setItem("authToken", token);
-      localStorage.setItem("authUser", JSON.stringify(user));
-    } catch (err: unknown) {
+      if (rememberMe) {
+          localStorage.setItem("authToken", result.token);
+          localStorage.setItem("authUser", JSON.stringify(user));
+      } else {
+          sessionStorage.setItem("authToken", result.token);
+          sessionStorage.setItem("authUser", JSON.stringify(user));
+      }
+
+      return result;
+    } catch (err) {
       const errorObj = err as ApiError;
 
       setState({
@@ -69,11 +77,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         loading: false,
         error: errorObj.message || "Login failed",
       });
+
+      return null;
     }
   };
 
   // Logout
   const logout = () => {
+
+    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("authUser");
+
     localStorage.removeItem("authToken");
     localStorage.removeItem("authUser");
 
@@ -92,6 +106,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         ...state,
         login,
         logout,
+        isAdmin: state.user?.userType === "Admin"
       }}
     >
       {children}
