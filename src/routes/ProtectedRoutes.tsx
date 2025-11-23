@@ -1,11 +1,12 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { JSX } from 'react';
+import LoadingSpinner from '../components/common/LoadingSpinner/LoadingSpinner';
 
 export const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const { isAuthenticated, loading } = useAuth();
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner />;
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
@@ -25,14 +26,14 @@ export const RoleProtectedRoute = ({
 }) => {
   const { isAuthenticated, user, loading } = useAuth();
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner />;
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 
   if (user && !allowedRoles.includes(user.userType)) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/unauthorized" replace />;
   }
 
   return children;

@@ -9,6 +9,7 @@ import CheckoutPage from '../pages/CheckoutPage';
 import ConfirmationPage from '../pages/ConfirmationPage';
 import AdminPage from '../pages/AdminPage';
 import NotFoundPage from '../pages/NotFoundPage';
+import UnauthorizedPage from '../pages/UnauthorizedPage';
 
 import { ProtectedRoute, RoleProtectedRoute } from "./ProtectedRoutes";
 
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
         ),
       },
 
+       {
+        path: 'unauthorized',
+        element: <UnauthorizedPage />,
+      },
     ],
   },
 ]);
