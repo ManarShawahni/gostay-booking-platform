@@ -10,44 +10,7 @@ import ConfirmationPage from '../pages/ConfirmationPage';
 import AdminPage from '../pages/AdminPage';
 import NotFoundPage from '../pages/NotFoundPage';
 
-import { useAuth } from '../hooks/useAuth';
-
-const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  const { isAuthenticated, loading } = useAuth();
-
-  if (loading) return <p>Loading...</p>;
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return children;
-};
-
-/*-----------------------------------------*/
-
-const RoleProtectedRoute = ({
-  children,
-  allowedRoles,
-}: {
-  children: JSX.Element;
-  allowedRoles: string[];
-}) => {
-  const { isAuthenticated, user, loading } = useAuth();
-
-  if (loading) return <p>Loading...</p>;
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  if (user && !allowedRoles.includes(user.userType)) {
-    return <Navigate to="/" replace />;
-  }
-
-  return children;
-};
-
+import { ProtectedRoute, RoleProtectedRoute } from "./ProtectedRoutes";
 
 export const router = createBrowserRouter([
   {

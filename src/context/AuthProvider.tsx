@@ -10,6 +10,7 @@ import {
 } from "../types";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  
   const [state, setState] = useState<AuthState>({
     isAuthenticated: false,
     token: null,
