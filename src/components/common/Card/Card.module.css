@@ -1,0 +1,67 @@
+.card {
+  background: var(--white);
+  border-radius: 14px;
+  border: 1px solid var(--border-default);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.20s ease, box-shadow 0.25s ease;
+  cursor: default;
+  min-height: 0;
+}
+
+
+.hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 26px var(--shadow-card);
+}
+
+
+.clickable {
+  cursor: pointer;
+}
+
+
+.imageWrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--gray-100);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.hover:hover .image {
+  transform: scale(1.05);
+}
+
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+
+.pad-none {
+  padding: 0;
+}
+
+.pad-sm {
+  padding: 0.5rem; 
+}
+
+.pad-md {
+  padding: 1rem; 
+}
+
+.pad-lg {
+  padding: 1.5rem;
+}

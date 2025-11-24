@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import styles from "./LoginPage.module.css";
 
-import Input from "../../components/common/Input";
-import Button from "../../components/common/Button";
+import {Input} from "../../components/common/Input";
+import {Button} from "../../components/common/Button";
 import LogoGoStay from "../../assets/LogoGoStay.svg";
 
 const LoginPage = () => {

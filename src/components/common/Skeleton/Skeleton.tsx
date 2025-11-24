@@ -1,0 +1,28 @@
+import React from "react";
+import styles from "./Skeleton.module.css";
+import clsx from "clsx";
+
+interface SkeletonProps {
+  width?: string | number;
+  height?: string | number;
+  circle?: boolean;
+  className?: string;
+}
+
+export const Skeleton: React.FC<SkeletonProps> = ({
+  width = "100%",
+  height = "1rem",
+  circle = false,
+  className,
+}) => {
+  return (
+    <div
+      className={clsx(
+        styles.skeleton,
+        circle && styles.circle,
+        className
+      )}
+      style={{ width, height }}
+    />
+  );
+};

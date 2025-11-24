@@ -1,11 +1,34 @@
 :root {
   --purple: #C957A1;
   --coral: #FF6B6B;
-  --charcoal: #2D3748;
 
+
+  --amber: #FBBF24; 
+  --mint: #34D399; 
+
+
+  --white: #FFFFFF;
   --offWhite: #FAFAFA;
-  --amber: #FBBF24;
-  --mint: #34D399;
+  --gray-50: #F7FAFC;
+  --gray-100: #EDF2F7;
+  --gray-200: #E2E8F0;
+  --gray-300: #CBD5E0;
+  --gray-400: #A0AEC0;
+  --gray-500: #718096;
+  --gray-600: #4A5568;
+  --gray-700: #2D3748;
+  --gray-800: #1A202C;
+
+
+  --success: #34D399;      
+  --warning: #FBBF24;     
+  --danger: #DC2626;       
+  --info: #3B82F6;         
+
 
   --gradient-main: linear-gradient(135deg, #7C3AED, #FF6B6B);
+
+
+  --border-default: var(--gray-200);
+  --shadow-card: rgba(0, 0, 0, 0.08);
 }
