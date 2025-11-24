@@ -8,7 +8,7 @@ interface Props {
   type?: "button" | "submit";
 }
 
-const Button = ({ children, fullWidth, type = "button", onClick }: Props) => {
+export const Button = ({ children, fullWidth, type = "button", onClick }: Props) => {
   return (
     <button
       type={type}
@@ -20,4 +20,3 @@ const Button = ({ children, fullWidth, type = "button", onClick }: Props) => {
   );
 };
 
-export default Button;

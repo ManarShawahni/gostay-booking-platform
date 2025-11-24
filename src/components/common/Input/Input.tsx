@@ -7,7 +7,7 @@ interface Props {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ value, placeholder, type = "text", onChange }: Props) => {
+export const Input = ({ value, placeholder, type = "text", onChange }: Props) => {
   return (
     <input
       className={styles.input}
@@ -18,5 +18,3 @@ const Input = ({ value, placeholder, type = "text", onChange }: Props) => {
     />
   );
 };
-
-export default Input;
