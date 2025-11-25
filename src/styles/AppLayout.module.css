@@ -21,10 +21,10 @@
   align-items: center;
 }
 
-.logo {
-  text-decoration: none;
-  font-size: 24px;
-  font-weight: 700;
+.logoImg {
+  height: 38px;      
+  width: auto;
+  display: block;
 }
 
 .logoPurple { color: var(--purple); }
