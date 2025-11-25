@@ -1,14 +1,15 @@
 .widget {
   display: grid;
-  grid-template-columns: 0.85fr auto 0.85fr auto 0.85fr auto 0.85fr auto;
+  grid-template-columns: 1.2fr auto 0.8fr auto 0.8fr auto 1fr 52px;
   align-items: center;
   background: var(--white);
   border-radius: 50px;
-  padding: 1.2rem 1.5rem;
+  padding: 1rem 1.5rem;
   box-shadow: 0 18px 40px rgba(0,0,0,0.15);
-  gap: 1.4rem;
+  gap: 1.2rem;
   width: 100%;
   max-width: 1100px;
+  position: relative;
 }
 
 .field {
@@ -16,6 +17,7 @@
   flex-direction: column;
   flex: 1;
   min-width: 0;
+  position: relative;
 }
 
 .label {
@@ -26,51 +28,169 @@
   font-weight: 600;
   color: var(--gray-600);
   margin-bottom: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
 .icon {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   color: var(--gray-500);
 }
 
 .input {
-  padding: 0.55rem 1.2rem ;
+  padding: 0.5rem 1rem ;
   border-radius: 40px;
   border: 1px solid var(--gray-300);
   background: var(--offWhite);
   font-size: 14px;
-  height: 42px;
+  height: 40px;
   width: 100%;
-  appearance: none;
+  transition: all 0.2s;
   position: relative;
 }
 
 .input:focus {
+  outline: none;
   border-color: var(--purple);
+  background: white;
   box-shadow: 0 0 0 3px rgba(201, 87, 161, 0.25);
 }
 
-.selectWrapper {
+
+.divider {
+  width: 1px;
+  height: 40px;
+  background: var(--gray-200);
+}
+
+.guestTrigger {
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  border: 1px solid #e5e7eb;
+  background: var(--offWhite);
+  font-size: 14px;
+  height: 40px;
+
+  min-width: 220px;
+  max-width: 240px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--gray-900);
   position: relative;
 }
 
-.selectWrapper::after {
+.guestTrigger::after {
   content: "▾";
   position: absolute;
   right: 14px;
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: none;
-  font-size: 12px;
+  font-size: 10px;
   color: var(--gray-600);
 }
 
-.divider {
-  width: 1px;
-  height: 42px;
-  background: var(--gray-200);
+.guestTrigger:hover,
+.guestTrigger:focus {
+  border-color: var(--purple);
+  background: white;
+  outline: none;
 }
+
+.guestDropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right:auto;
+  width: 260px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  padding: 1.2rem;
+  z-index: 1000;
+  min-width: 280px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.guestRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.guestRow:last-child {
+  border-bottom: none;
+}
+
+.guestLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 2px;
+}
+
+.guestSubLabel {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.guestControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.guestBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--gray-300);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--purple);
+  transition: all 0.2s;
+}
+
+.guestBtn:hover:not(:disabled) {
+  background: var(--purple);
+  color: white;
+  border-color: var(--purple);
+}
+
+.guestBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.guestCount {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--gray-900);
+  font-size: 14px;
+}
+
 
 .searchBtn {
   width: 52px;
@@ -82,14 +202,41 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
 }
 
 .searchBtn:hover {
-  background: var(--purple);
+  background: var(--purple-dark);
+  transform: scale(1.09);
 }
 
 .searchIcon {
   width: 22px;
   height: 22px;
   color: var(--white);
+}
+
+@media (max-width: 1024px) {
+  .widget {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 24px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .searchBtn {
+    width: 100%;
+    height: 48px;
+    border-radius: 12px;
+  }
+
+  .guestDropdown {
+    left: 0;
+    right: 0;
+  }
 }
