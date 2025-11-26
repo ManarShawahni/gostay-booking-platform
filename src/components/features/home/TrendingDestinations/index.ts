@@ -1,1 +1,2 @@
-export * from "./TrendingDestinations";
+export { default } from './TrendingDestinations';
+export { TrendingDestinations } from './TrendingDestinations';
