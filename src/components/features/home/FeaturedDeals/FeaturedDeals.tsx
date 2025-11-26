@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./FeaturedDeals.module.css";
 import { DealCard } from "./DealCard";
+import { Skeleton } from "../../../common/Skeleton";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -8,6 +9,8 @@ import {
 
 export const FeaturedDeals = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const [loading, setLoading] = useState(true);
 
   const deals = [
     {
@@ -56,13 +59,17 @@ export const FeaturedDeals = () => {
     },
   ];
 
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
   const scroll = (direction: "left" | "right") => {
     if (!scrollRef.current) return;
 
-    const amount = direction === "left" ? -350 : 350;
 
     scrollRef.current.scrollBy({
-      left: amount,
+      left: direction === "left" ? -350 : 350,
       behavior: "smooth",
     });
   };
@@ -94,10 +101,17 @@ export const FeaturedDeals = () => {
         </div>
       </div>
 
-      <div className={styles.scrollArea} ref={scrollRef}>
-        {deals.map((d) => (
-          <DealCard key={d.id} deal={d} />
-        ))}
+       <div className={styles.scrollArea} ref={scrollRef}>
+        {loading
+          ? Array.from({ length: 4 }).map((_, i) => (
+              <Skeleton
+                key={i}
+                width="320px"
+                height="420px"
+                className={styles.skeletonCard}
+              />
+            ))
+          : deals.map((deal) => <DealCard key={deal.id} deal={deal} />)}
       </div>
     </section>
   );

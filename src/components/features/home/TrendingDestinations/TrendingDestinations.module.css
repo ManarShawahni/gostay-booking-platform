@@ -170,6 +170,10 @@
   transform: scale(1.5);
 }
 
+.skeletonBox {
+  border-radius: 20px;
+}
+
 
 @media (max-width: 1024px) {
   .bentoGrid {

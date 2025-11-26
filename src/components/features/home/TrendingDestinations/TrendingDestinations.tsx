@@ -1,5 +1,9 @@
+import { useState, useEffect } from "react";
+
 import styles from './TrendingDestinations.module.css';
 import { DestinationCard } from './DestinationCard';
+
+import { Skeleton } from "../../../common/Skeleton";
 
 interface Destination {
   id: string;
@@ -11,6 +15,8 @@ interface Destination {
 }
 
 export const TrendingDestinations = () => {
+  const [loading, setLoading] = useState(true);
+
   const destinations: Destination[] = [
     {
       id: '1',
@@ -64,6 +70,11 @@ export const TrendingDestinations = () => {
 
   const frameColors = ['#FF6B6B', '#4ECDC4', '#FFE66D', '#A8E6CF', '#FF8B94', '#C7CEEA'];
 
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className={styles.section}>
       <div className={styles.header}>
@@ -72,14 +83,18 @@ export const TrendingDestinations = () => {
       </div>
 
       <div className={styles.bentoGrid}>
-        {destinations.map((destination, index) => (
-          <DestinationCard
-            key={destination.id}
-            destination={destination}
-            frameColor={frameColors[index % frameColors.length]}
-            gridClass={`card${(index % 6) + 1}`}
-          />
-        ))}
+        {loading
+          ? Array.from({ length: 6 }).map((_, i) => (
+              <Skeleton key={i} width="100%" height="100%" className={styles.skeletonBox} />
+            ))
+          : destinations.map((d, index) => (
+              <DestinationCard
+                key={d.id}
+                destination={d}
+                frameColor={frameColors[index % frameColors.length]}
+                gridClass={`card${(index % 6) + 1}`}
+              />
+            ))}
       </div>
     </section>
   );

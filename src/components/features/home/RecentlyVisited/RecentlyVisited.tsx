@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './RecentlyVisited.module.css';
 import { ExpandableCard } from './ExpandableCard';
 import { useAuth } from '../../../../hooks/useAuth';
+import { Skeleton } from "../../../common/Skeleton";
+
 
 interface VisitedHotel {
   hotelId: string;
@@ -17,9 +19,16 @@ interface VisitedHotel {
 export const RecentlyVisited = () => {
   const { user } = useAuth();
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const recentHotels: VisitedHotel[] = user
-    ? [
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!user) return null;
+
+  const recentHotels: VisitedHotel[] = [
         {
           hotelId: '1',
           hotelName: 'Grand Luxury Hotel',
@@ -50,15 +59,14 @@ export const RecentlyVisited = () => {
           visitDate: '2024-12-01',
           pricePerNight: 200,
         },
-      ]
-    : [];
+      ];
 
   const toggleCard = (id: string) => {
     setExpandedId(expandedId === id ? null : id);
   };
 
   if (!user || recentHotels.length === 0) {
-    return null; // Don't show section if not logged in or no history
+    return null; 
   }
 
   return (
@@ -69,14 +77,23 @@ export const RecentlyVisited = () => {
       </div>
 
       <div className={styles.cardList}>
-        {recentHotels.map((hotel) => (
-          <ExpandableCard
-            key={hotel.hotelId}
-            hotel={hotel}
-            isExpanded={expandedId === hotel.hotelId}
-            onToggle={() => toggleCard(hotel.hotelId)}
-          />
-        ))}
+        {loading
+          ? Array.from({ length: 3 }).map((_, i) => (
+              <Skeleton
+                key={i}
+                width="100%"
+                height="100px"
+                className={styles.skeletonItem}
+              />
+            ))
+          : recentHotels.map((hotel) => (
+              <ExpandableCard
+                key={hotel.hotelId}
+                hotel={hotel}
+                isExpanded={expandedId === hotel.hotelId}
+                onToggle={() => toggleCard(hotel.hotelId)}
+              />
+            ))}
       </div>
     </section>
   );
