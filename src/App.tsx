@@ -1,6 +1,8 @@
 import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./styles/AppLayout.module.css";
 import { useAuth } from "./hooks/useAuth";
+import Logo from "./assets/Logo.svg";
+
 
 function App() {
   const location = useLocation();
@@ -21,9 +23,9 @@ function App() {
         <header className={styles.header}>
           <div className={styles.navContainer}>
             <Link to="/" className={styles.logo}>
-              <span className={styles.logoPurple}>Go</span>
-              <span className={styles.logoCoral}>Stay</span>
+              <img src={Logo} alt="GoStay Logo" className={styles.logoImg} />
             </Link>
+
 
             <nav className={styles.links}>
               <Link to="/" className={styles.link}>Home</Link>
