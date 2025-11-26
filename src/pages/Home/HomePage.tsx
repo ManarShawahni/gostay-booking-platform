@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./HomePage.module.css";
 
 import { SearchWidget } from "../../components/features/home/SearchWidget";
-import { FeaturedDeals } from "../../components/features/home/FeaturedDeals";
+import  FeaturedDeals from "../../components/features/home/FeaturedDeals";
 import { RecentlyVisited } from "../../components/features/home/RecentlyVisited";
 import { TrendingDestinations } from "../../components/features/home/TrendingDestinations";
 

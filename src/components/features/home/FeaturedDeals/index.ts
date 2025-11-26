@@ -1,1 +1,1 @@
-export * from "./FeaturedDeals";
+export {default} from "./FeaturedDeals";
