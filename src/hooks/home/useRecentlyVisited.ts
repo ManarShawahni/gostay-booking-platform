@@ -1,32 +1,37 @@
 import { useEffect, useState } from "react";
+
 import { homeService } from "../../services";
-import { RecentHotel } from "../../types";
+
+import { RecentHotelApp } from "../../types";
+
+
 
 export const useRecentlyVisited = () => {
 
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<RecentHotel[]>([]);
+  const [data, setData] = useState<RecentHotelApp[]>([]);
+
 
   useEffect(() => {
-    const storedId = localStorage.getItem("userId");
-
-    if (!storedId) {
-      setLoading(false);
-      return;
-    }
+    const storedId = localStorage.getItem("userId") || "2";
 
     const load = async () => {
+
       try {
         setLoading(true);
         const res = await homeService.getRecentlyVisited(storedId);
         setData(res);
       } finally {
         setLoading(false);
-      }
-    };
 
+      }
+
+    };
     load();
+
   }, []);
 
   return { data, loading };
+
 };
+

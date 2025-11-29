@@ -1,17 +1,9 @@
 import styles from './RecentlyVisited.module.css';
 import { StarIcon, MapPinIcon, CalendarIcon, CurrencyDollarIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
+import { RecentHotelApp } from "../../../../types";
 
 interface ExpandableCardProps {
-  hotel: {
-    hotelId: string;
-    hotelName: string;
-    city: string;
-    country: string;
-    thumbnailUrl: string;
-    starRating: number;
-    visitDate: string;
-    pricePerNight: number;
-  };
+  hotel: RecentHotelApp;
   isExpanded: boolean;
   onToggle: () => void;
 }
@@ -32,7 +24,6 @@ export const ExpandableCard = ({ hotel, isExpanded, onToggle }: ExpandableCardPr
       className={`${styles.expandableCard} ${isExpanded ? styles.expanded : ''}`}
       onClick={onToggle}
     >
-      {/* Header (Always Visible) */}
       <div className={styles.cardHeader}>
         <img
           src={hotel.thumbnailUrl}
@@ -44,7 +35,7 @@ export const ExpandableCard = ({ hotel, isExpanded, onToggle }: ExpandableCardPr
           <h3 className={styles.hotelName}>{hotel.hotelName}</h3>
           <div className={styles.location}>
             <MapPinIcon className={styles.smallIcon} />
-            <span>{hotel.city}, {hotel.country}</span>
+            <span>{hotel.city}</span>
           </div>
         </div>
 
@@ -59,7 +50,6 @@ export const ExpandableCard = ({ hotel, isExpanded, onToggle }: ExpandableCardPr
         />
       </div>
 
-      {/* Details (Visible when expanded) */}
       <div className={styles.cardDetails}>
         <div className={styles.detailsGrid}>
           <div className={styles.detailItem}>

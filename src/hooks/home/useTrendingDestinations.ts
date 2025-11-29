@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { homeService } from "../../services";
-import { TrendingDestination } from "../../types";
+import { TrendingDestinationApp  } from "../../types";
 
 export const useTrendingDestinations = () => {
-  const [data, setData] = useState<TrendingDestination[]>([]);
+  const [data, setData] = useState<TrendingDestinationApp []>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

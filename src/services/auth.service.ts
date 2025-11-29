@@ -10,13 +10,14 @@ export const authService = {
         password: credentials.password,
       });
 
-      const token = response.data; 
+      const authentication = response.data; 
+
 
       const userType =
         credentials.username.toLowerCase() === "admin" ? "Admin" : "User";
 
       return {
-        token,
+        authentication,
         userType,
       };
     } catch (error) {
@@ -31,9 +32,6 @@ export const authService = {
     }
   },
 
-  /**
-   * Logout user
-   */
   logout(): void {
     localStorage.removeItem("authToken");
     localStorage.removeItem("authUser");

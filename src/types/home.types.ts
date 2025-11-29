@@ -11,6 +11,18 @@ export interface FeaturedDeal {
   roomPhotoUrl: string;
 }
 
+export interface FeaturedDealApp {
+  id: string; 
+  hotelName: string;
+  city: string;
+  imageUrl: string;
+  originalPrice: number; 
+  discountedPrice: number; 
+  discount: number;
+  starRating: number;
+}
+
+//===========================================
 
 export interface RecentHotel {
   hotelId: number;
@@ -23,6 +35,18 @@ export interface RecentHotel {
   priceUpperBound: number;
 }
 
+export interface RecentHotelApp {
+  hotelId: string;
+  hotelName: string;
+  city: string; 
+  thumbnailUrl: string;
+  starRating: number;
+  visitDate: string;
+  pricePerNight: number; 
+}
+
+//=========================================
+
 
 export interface TrendingDestination {
   cityId: number;
@@ -33,6 +57,15 @@ export interface TrendingDestination {
 }
 
 
+export interface TrendingDestinationApp {
+  id: string;
+  city: string;
+  country: string;
+  description: string;
+  imageUrl: string;
+  hotelsCount: number;
+}
+//=========================================
 export interface HomeSearchParams {
   checkInDate: string;
   checkOutDate: string;

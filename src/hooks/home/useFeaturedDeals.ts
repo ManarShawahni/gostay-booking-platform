@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { homeService } from "../../services";
-import { FeaturedDeal } from "../../types";
+import { FeaturedDealApp } from "../../types";
 
 export const useFeaturedDeals = () => {
-  const [data, setData] = useState<FeaturedDeal[]>([]);
+  const [data, setData] = useState<FeaturedDealApp[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
