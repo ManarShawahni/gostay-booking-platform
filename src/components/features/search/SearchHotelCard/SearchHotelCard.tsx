@@ -1,6 +1,6 @@
-import { Card } from "../../common/Card/Card";
-import { StarRating } from "../../common/StarRating/StarRating";
-import { SearchHotelResult } from "../../../types";
+import { Card } from "../../../common/Card/Card";
+import { StarRating } from "../../../common/StarRating/StarRating";
+import { SearchHotelResult } from "../../../../types";
 import styles from "./SearchHotelCard.module.css";
 import { MapPinIcon } from "@heroicons/react/24/outline";
 
@@ -20,7 +20,8 @@ export const SearchHotelCard = ({ hotel }: Props) => {
 
       <div className={styles.row}>
         <StarRating rating={hotel.starRating} size={18} />
-        <div className="{styles.locationWrapper}">
+        
+        <div className={styles.locationWrapper}>
             <MapPinIcon className={styles.locationIcon} />
             <span className={styles.city}>{hotel.cityName}</span>
         </div>
