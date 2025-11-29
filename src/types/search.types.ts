@@ -27,6 +27,7 @@ export interface SearchHotelResult {
 }
 
 export interface SearchQueryParams {
+  destination?: string;
   checkInDate: string;
   checkOutDate: string;
   adults: number;

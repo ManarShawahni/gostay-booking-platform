@@ -1,0 +1,25 @@
+.tag {
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #f8f9fb;
+  border: 1px solid var(--border-default);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tag:hover {
+  background: var(--purple-light);
+  border-color: var(--purple-light);
+}
+
+.active {
+  background: var(--purple);
+  color: white;
+  border-color: var(--purple);
+}
+
+

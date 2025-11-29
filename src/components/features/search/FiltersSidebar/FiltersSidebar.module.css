@@ -1,0 +1,141 @@
+.sidebar {
+  width: 260px;
+  background: #fff;
+  border: 1px solid var(--border-default);
+  border-radius: 14px;
+  padding: 1.2rem 1rem;
+  height: fit-content;
+  position: sticky;
+  top: 90px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.reset {
+  background: none;
+  border: none;
+  color: var(--purple);
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.reset:hover {
+  color: var(--purple-dark);
+}
+
+.block {
+  margin-bottom: 1.8rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 0.8rem;
+}
+
+.select {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  padding-right: 1.2rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-default);
+  background: var(--gray-50);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c3aed' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1.2rem;
+}
+
+.select:hover {
+  border-color: var(--purple-light);
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--purple);
+  background: white;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.priceInputs {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.inputGroup {
+  flex: 1;
+}
+
+.inputLabel {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--gray-600);
+  margin-bottom: 0.4rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-default);
+  background: var(--gray-100);
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.input:hover {
+  border-color: var(--purple-light);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--purple);
+  background: white;
+}
+
+.priceDisplay {
+  margin-top: 0.8rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--purple);
+  text-align: center;
+  padding: 0.5rem;
+  background: var(--purple-light-bg);
+  border-radius: 8px;
+}
+
+.tagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}

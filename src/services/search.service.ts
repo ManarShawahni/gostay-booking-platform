@@ -4,8 +4,19 @@ import { SearchQueryParams, SearchHotelResult, SearchAmenity } from "../types";
 export const searchService = {
   
   async searchHotels(params: SearchQueryParams): Promise<SearchHotelResult[]> {
-    const response = await api.get("/api/hotels", { params });
-    return response.data;
+  const response = await api.get("/api/home/search", {
+    params: {
+      city: params.destination,
+      checkInDate: params.checkInDate,
+      checkOutDate: params.checkOutDate,
+      adults: params.adults,
+      children: params.children,
+      rooms: params.rooms,
+      starRate: params.starRate || undefined
+    }
+  });
+
+  return response.data;
   },
 
   async getAmenities(): Promise<SearchAmenity[]> {

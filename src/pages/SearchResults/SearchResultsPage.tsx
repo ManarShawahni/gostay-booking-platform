@@ -1,13 +1,25 @@
+import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useSearchHotels } from "../../hooks/search/useSearchHotels";
-import { Card } from "../../components/common/Card/Card";
 import { Skeleton } from "../../components/common/Skeleton/Skeleton";
 import { ErrorMessage } from "../../components/common/ErrorMessage/ErrorMessage";
 
+import { SearchHotelCard } from "../../components/features/search/SearchHotelCard";
+import { FiltersSidebar } from "../../components/features/search/FiltersSidebar";
+import { SearchResultsLayout } from "../../components/features/search/SearchResultsLayout";
 import styles from "./SearchResultsPage.module.css";
+
 
 export default function SearchResultsPage() {
   const [params] = useSearchParams();
+
+  const [filters, setFilters] = useState({
+    starRate: 0,
+    minPrice: 0,
+    maxPrice: 1000,
+    amenities: [] as string[],
+  });
+
 
   const query = {
     destination: params.get("destination") || "", 
@@ -16,52 +28,67 @@ export default function SearchResultsPage() {
     adults: Number(params.get("adults") || 1),
     children: Number(params.get("children") || 0),
     rooms: Number(params.get("rooms") || 1),
-    starRate: Number(params.get("starRate") || 0),
-    sort: params.get("sort") || "",
   };
 
   const { hotels, loading, error } = useSearchHotels(query);
 
+  const filtered  = hotels.filter((hotel) => {
+
+    const matchesPrice =
+      hotel.roomPrice >= filters.minPrice && hotel.roomPrice <= filters.maxPrice;
+
+
+    const matchesStar =
+      filters.starRate === 0 || hotel.starRating >= filters.starRate;
+
+    const matchesAmenities =
+      filters.amenities.length === 0 ||
+      filters.amenities.every((am) =>
+        hotel.amenities?.map((x) => x.name).includes(am)
+      );
+
+    return matchesPrice && matchesStar && matchesAmenities;
+  });
+
   return (
-    <div className={styles.page}>
-      <h2 className={styles.title}>Search Results</h2>
+      <SearchResultsLayout
+        sidebar={<FiltersSidebar onChange={setFilters} />}
+      >
+      <div className={styles.header}>
+        <h2 className={styles.title}>Search Results</h2>
+        {!loading && (
+          <p className={styles.subtitle}>
+            Found <span className={styles.count}>{filtered.length}</span> hotels
+          </p>
+        )}
+      </div>
+
+      {error && <ErrorMessage message={error} />}
 
       {loading && (
         <div className={styles.grid}>
           {[...Array(6)].map((_, i) => (
-            <Skeleton key={i} height="260px" />
+            <Skeleton key={i} height="280px" />
           ))}
         </div>
       )}
 
-      {error && <ErrorMessage message={error} />}
-
-      {!loading && hotels.length === 0 && (
-        <p className={styles.noResults}>No hotels found.</p>
+      {!loading && !error &&  filtered.length === 0 && (
+        <div className={styles.empty}>
+          <p className={styles.noResults}>No hotels match your filters.</p>
+          <p className={styles.noResultsHint}>
+            Try adjusting your search criteria
+          </p>
+        </div>
       )}
 
-      {!loading && hotels.length > 0 && (
+      {!loading && !error && filtered.length > 0 && (
         <div className={styles.grid}>
-          {hotels.map((hotel) => (
-            <Card
-              key={hotel.id}
-              image={hotel.photoUrl || "/images/hotel-placeholder.jpg"}
-              padding="md"
-              hover
-            >
-              <h3 className={styles.hotelName}>{hotel.name}</h3>
-
-              <p className={styles.starRating}>{hotel.starRating} Stars</p>
-
-              <p className={styles.price}>
-                {hotel.pricePerNight
-                  ? `$${hotel.pricePerNight} / night`
-                  : "Price not available"}
-              </p>
-            </Card>
+          {filtered.map((hotel) => (
+            <SearchHotelCard key={hotel.hotelId} hotel={hotel} />
           ))}
         </div>
       )}
-    </div>
+    </SearchResultsLayout>
   );
 }
