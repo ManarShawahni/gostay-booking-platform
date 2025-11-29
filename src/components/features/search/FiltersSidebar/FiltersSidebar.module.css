@@ -132,3 +132,10 @@
   background: var(--purple-light-bg);
   border-radius: 8px;
 }
+
+.tagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}

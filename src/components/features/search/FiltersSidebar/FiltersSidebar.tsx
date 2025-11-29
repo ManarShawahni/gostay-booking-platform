@@ -1,21 +1,27 @@
 import { useState } from "react";
 import styles from "./FiltersSidebar.module.css";
+import { AmenityTag } from "../../../common/AmenityTag/AmenityTag";
+import { useAmenities } from "../../../../hooks/search/useAmenities";
 
 interface FilterValues {
     starRate: number;
     minPrice: number;
     maxPrice: number;
+    amenities: string[];
 }
 
-interface FiltersSidebarProps {
+interface Props  {
   onChange?: (filters: FilterValues) => void;
 }
 
-export const FiltersSidebar = ({ onChange }: FiltersSidebarProps) => {
+export const FiltersSidebar = ({ onChange }: Props ) => {
+    const { data: list } = useAmenities();
+
     const [filters, setFilters] = useState<FilterValues>({
     starRate: 0,
     minPrice: 0,
     maxPrice: 1000,
+    amenities: [],
   });
     
   const updateFilters = (partial: Partial<FilterValues>) => {
@@ -26,8 +32,17 @@ export const FiltersSidebar = ({ onChange }: FiltersSidebarProps) => {
     });
   };
 
+    const toggleAmenity = (name: string) => {
+    const exists = filters.amenities.includes(name);
+    const updated = exists
+      ? filters.amenities.filter((a) => a !== name)
+      : [...filters.amenities, name];
+
+    updateFilters({ amenities: updated });
+  };
+
   const resetFilters = () => {
-    const initial = { starRate: 0, minPrice: 0, maxPrice: 1000 };
+    const initial = { starRate: 0, minPrice: 0, maxPrice: 1000, amenities: []};
     setFilters(initial);
     onChange?.(initial);
   };
@@ -93,6 +108,20 @@ export const FiltersSidebar = ({ onChange }: FiltersSidebarProps) => {
           ${filters.minPrice} – ${filters.maxPrice}
         </div>
         </div>
+      <div className={styles.block}>
+        <label className={styles.label}>Amenities</label>
+        <div className={styles.tagsWrapper}>
+          {list.map((a) => (
+            <AmenityTag
+              key={a.id}
+              label={a.name}
+              selected={filters.amenities.includes(a.name)}
+              onToggle={() => toggleAmenity(a.name)}
+            />
+          ))}
+        </div>
+      </div>
+
     </aside>
   );
 };

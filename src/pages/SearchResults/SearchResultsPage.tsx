@@ -17,6 +17,7 @@ export default function SearchResultsPage() {
     starRate: 0,
     minPrice: 0,
     maxPrice: 1000,
+    amenities: [] as string[],
   });
 
 
@@ -32,21 +33,26 @@ export default function SearchResultsPage() {
   const { hotels, loading, error } = useSearchHotels(query);
 
   const filtered  = hotels.filter((hotel) => {
-    const price = hotel.roomPrice || 0;
-    const star = hotel.starRating || 0;
 
     const matchesPrice =
-      price >= filters.minPrice && price <= filters.maxPrice;
+      hotel.roomPrice >= filters.minPrice && hotel.roomPrice <= filters.maxPrice;
+
 
     const matchesStar =
-      filters.starRate === 0 || star >= filters.starRate;
+      filters.starRate === 0 || hotel.starRating >= filters.starRate;
 
-    return matchesPrice && matchesStar;
+    const matchesAmenities =
+      filters.amenities.length === 0 ||
+      filters.amenities.every((am) =>
+        hotel.amenities?.map((x) => x.name).includes(am)
+      );
+
+    return matchesPrice && matchesStar && matchesAmenities;
   });
 
   return (
       <SearchResultsLayout
-        sidebar={<FiltersSidebar onChange={(f) => setFilters(f)} />}
+        sidebar={<FiltersSidebar onChange={setFilters} />}
       >
       <div className={styles.header}>
         <h2 className={styles.title}>Search Results</h2>
