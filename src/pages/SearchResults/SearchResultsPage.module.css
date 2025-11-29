@@ -1,0 +1,42 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.noResults {
+  color: var(--gray-600);
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.hotelName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.location {
+  color: var(--gray-500);
+  font-size: 0.9rem;
+}
+
+.price {
+  margin-top: 8px;
+  font-weight: 700;
+  color: var(--purple);
+  font-size: 1rem;
+}

@@ -1,17 +1,9 @@
 import styles from "./FeaturedDeals.module.css";
 import { MapPinIcon, StarIcon } from "@heroicons/react/24/solid";
+import { FeaturedDealApp } from "../../../../types";
 
 interface DealCardProps {
-  deal: {
-    id: string;
-    hotelName: string;
-    city: string;
-    imageUrl: string;
-    originalPrice: number;
-    discountedPrice: number;
-    discount: number;
-    starRating: number;
-  };
+  deal: FeaturedDealApp;
 }
 
 export const DealCard = ({ deal }: DealCardProps) => {

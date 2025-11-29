@@ -45,6 +45,8 @@ const login = async (
     try {
       const result = await authService.login(credentials);
 
+      const jwt = result.authentication;
+
       const user: User = {
         username: credentials.username,
         userType: result.userType,
@@ -52,19 +54,20 @@ const login = async (
 
       setState({
         isAuthenticated: true,
-        token: result.token,
+        token: result.authentication,
         user,
         loading: false,
         error: null,
       });
 
       if (rememberMe) {
-          localStorage.setItem("authToken", result.token);
+          localStorage.setItem("authToken", jwt);
           localStorage.setItem("authUser", JSON.stringify(user));
       } else {
-          sessionStorage.setItem("authToken", result.token);
+          sessionStorage.setItem("authToken", jwt);
           sessionStorage.setItem("authUser", JSON.stringify(user));
       }
+
 
       return result;
     } catch (err) {

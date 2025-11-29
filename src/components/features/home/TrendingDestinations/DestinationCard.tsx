@@ -1,22 +1,16 @@
 import styles from './TrendingDestinations.module.css';
 import { MapPinIcon, BuildingOfficeIcon } from '@heroicons/react/24/outline';
+import { TrendingDestinationApp } from "../../../../types";
 
 interface DestinationCardProps {
-  destination: {
-    id: string;
-    cityName: string;
-    country: string;
-    description: string;
-    imageUrl: string;
-    hotelsCount: number;
-  };
+  destination: TrendingDestinationApp;
   frameColor: string;
   gridClass: string;
 }
 
 export const DestinationCard = ({ destination, frameColor, gridClass }: DestinationCardProps) => {
   const handleClick = () => {
-    window.location.href = `/search?destination=${destination.cityName}`;
+    window.location.href = `/search?destination=${destination.city}`;
   };
 
   return (
@@ -27,7 +21,7 @@ export const DestinationCard = ({ destination, frameColor, gridClass }: Destinat
     >
       <img
         src={destination.imageUrl}
-        alt={destination.cityName}
+        alt={destination.city}
         className={styles.cardImage}
         loading="lazy"
       />
@@ -35,7 +29,7 @@ export const DestinationCard = ({ destination, frameColor, gridClass }: Destinat
       <div className={styles.cardOverlay}>
         <div className={styles.cardContent}>
           <div className={styles.cityInfo}>
-            <h3 className={styles.cityName}>{destination.cityName}</h3>
+            <h3 className={styles.cityName}>{destination.city}</h3>
             <p className={styles.country}>
               <MapPinIcon className={styles.icon} />
               {destination.country}
