@@ -1,9 +1,9 @@
 import { useSearchParams } from "react-router-dom";
 import { useSearchHotels } from "../../hooks/search/useSearchHotels";
-import { Card } from "../../components/common/Card/Card";
 import { Skeleton } from "../../components/common/Skeleton/Skeleton";
 import { ErrorMessage } from "../../components/common/ErrorMessage/ErrorMessage";
 
+import { SearchHotelCard } from "../../components/features/search/SearchHotelCard";
 import styles from "./SearchResultsPage.module.css";
 
 export default function SearchResultsPage() {
@@ -43,22 +43,7 @@ export default function SearchResultsPage() {
       {!loading && hotels.length > 0 && (
         <div className={styles.grid}>
           {hotels.map((hotel) => (
-            <Card
-              key={hotel.id}
-              image={hotel.photoUrl || "/images/hotel-placeholder.jpg"}
-              padding="md"
-              hover
-            >
-              <h3 className={styles.hotelName}>{hotel.name}</h3>
-
-              <p className={styles.starRating}>{hotel.starRating} Stars</p>
-
-              <p className={styles.price}>
-                {hotel.pricePerNight
-                  ? `$${hotel.pricePerNight} / night`
-                  : "Price not available"}
-              </p>
-            </Card>
+            <SearchHotelCard key={hotel.hotelId} hotel={hotel} />
           ))}
         </div>
       )}

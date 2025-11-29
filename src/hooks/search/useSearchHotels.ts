@@ -3,14 +3,20 @@ import { searchService } from "../../services";
 import { SearchHotelResult, SearchQueryParams } from "../../types";
 
 export const useSearchHotels = (params: SearchQueryParams) => {
-  const [data, setData] = useState<SearchHotelResult[]>([]);
+  const [hotels, setHotels] = useState<SearchHotelResult[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const load = async () => {
       try {
+        setLoading(true);
+        setError(null);
+
         const res = await searchService.searchHotels(params);
-        setData(res);
+        setHotels(res);
+      } catch {
+        setError("Failed to load search results");
       } finally {
         setLoading(false);
       }
@@ -19,5 +25,5 @@ export const useSearchHotels = (params: SearchQueryParams) => {
     load();
   }, [JSON.stringify(params)]);
 
-  return { data, loading };
+  return { hotels, loading, error };
 };
