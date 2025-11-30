@@ -1,18 +1,19 @@
 .layout {
   display: grid;
   grid-template-columns: 280px 1fr;
-  gap: 2rem;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 2.5rem 1rem;
+  gap: 2.5rem;
+  max-width: 1400px;
+  margin: 0 70px;
+  padding: 2rem 2rem;
 }
 
 .sidebar {
   position: sticky;
-  top: 1.5rem;
+  top: 2rem;
   height: fit-content;
 }
 
 .content {
   width: 100%;
+  align-items: center;
 }

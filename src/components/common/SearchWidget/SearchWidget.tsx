@@ -4,27 +4,43 @@ import { MagnifyingGlassIcon, MapPinIcon, CalendarIcon, UserGroupIcon } from "@h
 
 interface SearchParams {
   destination: string;
-  checkIn: string;
-  checkOut: string;
+  checkInDate: string;
+  checkOutDate: string;
   adults: number;
   children: number;
   rooms: number;
 }
 
+interface Props {
+  initialValues?: Partial<SearchParams>;
+  onSearch?: (params: SearchParams) => void;
+}
 
-export const SearchWidget: React.FC = () => {
+export const SearchWidget: React.FC<Props> =({
+  initialValues,
+  onSearch,
+}) => {
 
   const [showGuestDropdown, setShowGuestDropdown] = useState(false);
   const [searchParams, setSearchParams] = useState<SearchParams>({
     destination: "",
-    checkIn: getTodayDate(),
-    checkOut: getTomorrowDate(),
+    checkInDate: getTodayDate(),
+    checkOutDate: getTomorrowDate(),
     adults: 2,
     children: 0,
     rooms: 1,
   });
 
   const guestDropdownRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      if (initialValues) {
+        setSearchParams((prev) => ({
+          ...prev,
+          ...initialValues,
+        }));
+      }
+    }, [initialValues]);
 
     useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -43,15 +59,20 @@ export const SearchWidget: React.FC = () => {
       return;
     }
 
-    if (new Date(searchParams.checkIn) >= new Date(searchParams.checkOut)) {
+    if (new Date(searchParams.checkInDate) >= new Date(searchParams.checkOutDate)) {
       alert("Check-out date must be after check-in date");
+      return;
+    }
+
+     if (onSearch) {
+      onSearch(searchParams);
       return;
     }
 
     const queryParams = new URLSearchParams({
       destination: searchParams.destination,
-      checkInDate: searchParams.checkIn,
-      checkOutDate: searchParams.checkOut,
+      checkInDate: searchParams.checkInDate,
+      checkOutDate: searchParams.checkOutDate,
       adults: searchParams.adults.toString(),
       children: searchParams.children.toString(),
       rooms: searchParams.rooms.toString(),
@@ -105,9 +126,9 @@ export const SearchWidget: React.FC = () => {
         <input 
           type="date" 
           className={styles.input} 
-          value={searchParams.checkIn}
+          value={searchParams.checkInDate}
           min={getTodayDate()}
-          onChange={(e) => setSearchParams(prev => ({ ...prev, checkIn: e.target.value }))}
+          onChange={(e) => setSearchParams(prev => ({ ...prev, checkInDate: e.target.value }))}
           aria-label="Check-in date"
         />
       </div>
@@ -123,9 +144,9 @@ export const SearchWidget: React.FC = () => {
         <input 
           type="date" 
           className={styles.input}
-          value={searchParams.checkOut}
-          min={searchParams.checkIn}
-          onChange={(e) => setSearchParams(prev => ({ ...prev, checkOut: e.target.value }))}
+          value={searchParams.checkOutDate}
+          min={searchParams.checkInDate}
+          onChange={(e) => setSearchParams(prev => ({ ...prev, checkOutDate: e.target.value }))}
           aria-label="Check-out date"
         />
       </div>
