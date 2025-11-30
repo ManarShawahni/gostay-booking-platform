@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSearchHotels } from "../../hooks/search/useSearchHotels";
 import { Skeleton } from "../../components/common/Skeleton/Skeleton";
 import { ErrorMessage } from "../../components/common/ErrorMessage/ErrorMessage";
 
+import { SearchWidget } from "../../components/common/SearchWidget/SearchWidget";
 import { SearchHotelCard } from "../../components/features/search/SearchHotelCard";
 import { FiltersSidebar } from "../../components/features/search/FiltersSidebar";
 import { SearchResultsLayout } from "../../components/features/search/SearchResultsLayout";
 import styles from "./SearchResultsPage.module.css";
+import { SearchQueryParams } from "../../types";
 
 
 export default function SearchResultsPage() {
+  const navigate = useNavigate();
   const [params] = useSearchParams();
 
   const [filters, setFilters] = useState({
@@ -28,6 +31,19 @@ export default function SearchResultsPage() {
     adults: Number(params.get("adults") || 1),
     children: Number(params.get("children") || 0),
     rooms: Number(params.get("rooms") || 1),
+  };
+
+    const handleWidgetSearch = (values: SearchQueryParams) => {
+    const q = new URLSearchParams({
+      destination: values.destination || "",
+      checkInDate: values.checkInDate,
+      checkOutDate: values.checkOutDate,
+      adults: values.adults.toString(),
+      children: values.children.toString(),
+      rooms: values.rooms.toString(),
+    });
+
+    navigate(`/search?${q.toString()}`);
   };
 
   const { hotels, loading, error } = useSearchHotels(query);
@@ -54,6 +70,20 @@ export default function SearchResultsPage() {
       <SearchResultsLayout
         sidebar={<FiltersSidebar onChange={setFilters} />}
       >
+
+      <div className={styles.searchWidgetWrapper}>
+        <SearchWidget
+          initialValues={{
+            destination: query.destination,
+            checkInDate: query.checkInDate,
+            checkOutDate: query.checkOutDate,
+            adults: query.adults,
+            children: query.children,
+            rooms: query.rooms,
+          }}
+          onSearch={handleWidgetSearch}
+        />
+      </div>
       <div className={styles.header}>
         <h2 className={styles.title}>Search Results</h2>
         {!loading && (
