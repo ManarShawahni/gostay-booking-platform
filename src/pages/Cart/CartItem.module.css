@@ -1,0 +1,53 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--white);
+  border: 1px solid var(--border-default);
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+.image {
+  width: 95px;
+  height: 75px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.info {
+  flex: 1;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.city {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+.price {
+  font-weight: 700;
+  color: var(--purple);
+  margin-top: 6px;
+}
+
+.removeBtn {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.removeBtn:hover {
+  background: #ececec;
+}

@@ -2,13 +2,19 @@ import { Card } from "../../../common/Card/Card";
 import { StarRating } from "../../../common/StarRating/StarRating";
 import { SearchHotelResult } from "../../../../types";
 import styles from "./SearchHotelCard.module.css";
-import { MapPinIcon } from "@heroicons/react/24/outline";
+import { MapPinIcon, ShoppingCartIcon, CheckIcon } from "@heroicons/react/24/outline";
+import {useCart} from "../../../../hooks/useCart";
 
 interface Props {
   hotel: SearchHotelResult;
 }
 
 export const SearchHotelCard = ({ hotel }: Props) => {
+
+  const { addToCart, isInCart } = useCart();
+
+  const added = isInCart(hotel.hotelId);
+
   return (
     <Card
       image={hotel.roomPhotoUrl}
@@ -16,6 +22,19 @@ export const SearchHotelCard = ({ hotel }: Props) => {
       hover
       className={styles.card}
     >
+
+      <button
+        className={`${styles.cartBtn} ${added ? styles.added : ""}`}
+        disabled={added}
+        onClick={() => addToCart(hotel)}
+      >
+        {added ? (
+          <CheckIcon className={styles.checkIcon} />
+        ) : (
+          <ShoppingCartIcon className={styles.cartIcon} />
+        )}
+      </button>
+
       <h3 className={styles.name}>{hotel.hotelName}</h3>
 
       <div className={styles.row}>

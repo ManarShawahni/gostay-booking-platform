@@ -1,0 +1,20 @@
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--purple);
+  color: white;
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  animation: fade 2.2s ease forwards;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+@keyframes fade {
+  0% { opacity: 0; transform: translateY(15px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(10px); }
+}

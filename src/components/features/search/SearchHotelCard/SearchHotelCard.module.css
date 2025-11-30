@@ -63,3 +63,48 @@
   font-weight: 400;
   color: var(--gray-600);
 }
+
+.cartBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
+
+.cartBtn:hover {
+  background: white;
+  transform: scale(1.07);
+}
+
+.cartIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--purple);
+}
+
+.added {
+  background: #d1ffce !important;
+  border: 1px solid #4caf50 !important;
+  transform: scale(1.05);
+}
+
+.added .checkIcon {
+  width: 20px;
+  height: 20px;
+  color: #2e7d32;
+}
+
+.cartBtn:disabled {
+  cursor: default;
+  opacity: 0.9;
+}
