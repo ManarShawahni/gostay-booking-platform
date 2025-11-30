@@ -12,6 +12,7 @@ import NotFoundPage from '../pages/NotFoundPage';
 import UnauthorizedPage from '../pages/UnauthorizedPage/UnauthorizedPage';
 
 import { ProtectedRoute, RoleProtectedRoute } from "./ProtectedRoutes";
+import CartPage from '../pages/Cart/CartPage';
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
             <HotelDetailPage />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
       },
       {
         path: 'checkout',

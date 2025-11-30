@@ -1,0 +1,50 @@
+.footer {
+  background: #f8f9fb;
+  padding: 3rem 1rem 2rem;
+  border-top: 1px solid var(--border-default);
+  margin-top: 4rem;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--charcoal);
+}
+
+.sub {
+  font-size: 0.95rem;
+  color: var(--gray-600);
+}
+
+.section h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 0.8rem;
+}
+
+.section p {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  margin-bottom: 0.45rem;
+  cursor: pointer;
+}
+
+.section p:hover {
+  color: var(--purple);
+}
+
+.copy {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--gray-500);
+  font-size: 0.85rem;
+}

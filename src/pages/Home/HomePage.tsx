@@ -24,7 +24,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Featured Deals */}
-      <section className={styles.section}>
+      <section id="deals-section" className={styles.section}>
         <FeaturedDeals />
       </section>
 
@@ -34,7 +34,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Trending Destinations */}
-      <section className={styles.section}>
+      <section id="dest-section" className={styles.section}>
         <TrendingDestinations />
       </section>
 
