@@ -2,14 +2,23 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import styles from "./BookingForm.module.css";
 import { Input } from "../../../common/Input/Input";
-import { CreateBookingRequest } from "../../../../types/booking.types";
+
+
+interface BookingFormValues {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  paymentMethod: string;
+  specialRequests: string;
+}
 
 interface Props {
-  onSubmit: (values: CreateBookingRequest) => void;
   hotelId: number;
   roomId: number;
   checkInDate: string;
   checkOutDate: string;
+  onSubmit: (values: BookingFormValues) => void;
 }
 
 const BookingSchema = Yup.object().shape({
@@ -20,15 +29,9 @@ const BookingSchema = Yup.object().shape({
   paymentMethod: Yup.string().required("Required"),
 });
 
-export const BookingForm = ({
-  onSubmit,
-  hotelId,
-  roomId,
-  checkInDate,
-  checkOutDate,
-}: Props) => {
+export const BookingForm = ({ onSubmit }: Props) => {
   return (
-    <Formik
+     <Formik<BookingFormValues>
       initialValues={{
         firstName: "",
         lastName: "",
@@ -38,28 +41,9 @@ export const BookingForm = ({
         specialRequests: "",
       }}
       validationSchema={BookingSchema}
-      onSubmit={(values) => {
-        const payload: CreateBookingRequest = {
-          hotelId,
-          roomId,
-          checkInDate,
-          checkOutDate,
-          numberOfAdults: 2,
-          numberOfChildren: 0,
-          guestInfo: {
-            firstName: values.firstName,
-            lastName: values.lastName,
-            email: values.email,
-            phoneNumber: values.phoneNumber,
-          },
-          paymentMethod: values.paymentMethod,
-          specialRequests: values.specialRequests,
-        };
-
-        onSubmit(payload);
-      }}
+      onSubmit={(values) => onSubmit(values)}
     >
-      {({ values, setFieldValue }) => (
+      {({ values, setFieldValue, isSubmitting }) => (
         <Form className={styles.form}>
           <h3 className={styles.title}>Guest Information</h3>
 
@@ -130,6 +114,14 @@ export const BookingForm = ({
             placeholder="Any notes?"
             className={styles.textarea}
           />
+
+          <button 
+            type="submit" 
+            className={styles.submitBtn}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Processing..." : "Complete Checkout"}
+          </button>
         </Form>
       )}
     </Formik>
