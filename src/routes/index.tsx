@@ -4,7 +4,7 @@ import App from '../App';
 import {HomePage} from '../pages/Home/HomePage';
 import LoginPage from '../pages/Login/LoginPage';
 import SearchResultsPage from '../pages/SearchResults/SearchResultsPage';
-import HotelDetailPage from '../pages/HotelDetailPage';
+import HotelDetailPage from '../pages/HotelDetailPage/HotelDetailPage';
 import CheckoutPage from '../pages/CheckoutPage/CheckoutPage';
 import ConfirmationPage from '../pages/ConfirmationPage/ConfirmationPage';
 import AdminPage from '../pages/AdminPage';
