@@ -5,8 +5,8 @@ import {HomePage} from '../pages/Home/HomePage';
 import LoginPage from '../pages/Login/LoginPage';
 import SearchResultsPage from '../pages/SearchResults/SearchResultsPage';
 import HotelDetailPage from '../pages/HotelDetailPage';
-import CheckoutPage from '../pages/CheckoutPage';
-import ConfirmationPage from '../pages/ConfirmationPage';
+import CheckoutPage from '../pages/CheckoutPage/CheckoutPage';
+import ConfirmationPage from '../pages/ConfirmationPage/ConfirmationPage';
 import AdminPage from '../pages/AdminPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import UnauthorizedPage from '../pages/UnauthorizedPage/UnauthorizedPage';
@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'confirmation/:bookingId',
+        path: 'confirmation',
         element: (
           <ProtectedRoute>
             <ConfirmationPage />
