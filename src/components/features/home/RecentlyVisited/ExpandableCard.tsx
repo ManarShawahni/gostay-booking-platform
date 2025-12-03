@@ -16,7 +16,7 @@ export const ExpandableCard = ({ hotel, isExpanded, onToggle }: ExpandableCardPr
 
   const handleViewDetails = (e: React.MouseEvent) => {
     e.stopPropagation();
-    window.location.href = `/hotel/${hotel.hotelId}`;
+    window.location.href = `/hotels/${hotel.hotelId}`;
   };
 
   return (

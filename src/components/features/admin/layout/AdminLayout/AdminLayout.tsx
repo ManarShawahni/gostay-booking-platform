@@ -4,6 +4,7 @@ import { AdminSidebar } from "../AdminSidebar/AdminSidebar";
 import { AdminHeader } from "../AdminHeader/AdminHeader";
 import { Bars3Icon } from "@heroicons/react/24/outline";
 import styles from "./AdminLayout.module.css";
+import ScrollToTop from "../../../../common/ScrollToTop";
 
 export const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -14,11 +15,12 @@ export const AdminLayout = () => {
 
   return (
     <div className={styles.layout}>
+      <ScrollToTop />
       <AdminSidebar isOpen={sidebarOpen} onToggle={toggleSidebar} />
-      
+
       {!sidebarOpen && (
-        <button 
-          className={styles.floatingMenuBtn} 
+        <button
+          className={styles.floatingMenuBtn}
           onClick={toggleSidebar}
           aria-label="Open sidebar"
         >

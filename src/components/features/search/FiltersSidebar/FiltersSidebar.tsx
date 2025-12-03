@@ -3,48 +3,50 @@ import styles from "./FiltersSidebar.module.css";
 import { AmenityTag } from "../../../common/AmenityTag/AmenityTag";
 import { useAmenities } from "../../../../hooks/search/useAmenities";
 
-interface FilterValues {
-    starRate: number;
-    minPrice: number;
-    maxPrice: number;
-    amenities: string[];
+export interface FilterValues {
+  starRate: number;
+  minPrice: number;
+  maxPrice: number;
+  amenities: string[];
 }
 
-interface Props  {
+interface Props {
   onChange?: (filters: FilterValues) => void;
+  onReset?: () => void;
 }
 
-export const FiltersSidebar = ({ onChange }: Props ) => {
-    const { data: list } = useAmenities();
+export const FiltersSidebar = ({ onChange, onReset }: Props) => {
+  const { data: list } = useAmenities();
 
-    const [filters, setFilters] = useState<FilterValues>({
+  const initialFilters: FilterValues = {
     starRate: 0,
     minPrice: 0,
     maxPrice: 1000,
     amenities: [],
-  });
-    
+  };
+
+  const [filters, setFilters] = useState<FilterValues>(initialFilters);
+
   const updateFilters = (partial: Partial<FilterValues>) => {
     setFilters((prev) => {
-      const updated = { ...prev, ...partial };
+      const updated: FilterValues = { ...prev, ...partial };
       onChange?.(updated);
       return updated;
     });
   };
 
-    const toggleAmenity = (name: string) => {
-    const exists = filters.amenities.includes(name);
-    const updated = exists
+  const toggleAmenity = (name: string) => {
+    const updatedAmenities = filters.amenities.includes(name)
       ? filters.amenities.filter((a) => a !== name)
       : [...filters.amenities, name];
 
-    updateFilters({ amenities: updated });
+    updateFilters({ amenities: updatedAmenities });
   };
 
   const resetFilters = () => {
-    const initial = { starRate: 0, minPrice: 0, maxPrice: 1000, amenities: []};
-    setFilters(initial);
-    onChange?.(initial);
+    setFilters(initialFilters);
+    onChange?.(initialFilters);
+    onReset?.();
   };
 
   return (
@@ -56,11 +58,12 @@ export const FiltersSidebar = ({ onChange }: Props ) => {
         </button>
       </div>
 
+      {/* STAR RATING */}
       <div className={styles.block}>
         <label className={styles.label}>Star Rating</label>
         <select
           value={filters.starRate}
-          onChange={(e) => updateFilters({ starRate: Number(e.target.value)})}
+          onChange={(e) => updateFilters({ starRate: Number(e.target.value) })}
           className={styles.select}
         >
           <option value={0}>Any</option>
@@ -72,6 +75,7 @@ export const FiltersSidebar = ({ onChange }: Props ) => {
         </select>
       </div>
 
+      {/* PRICE RANGE */}
       <div className={styles.block}>
         <label className={styles.label}>Price Range</label>
 
@@ -83,7 +87,8 @@ export const FiltersSidebar = ({ onChange }: Props ) => {
               value={filters.minPrice}
               min={0}
               max={filters.maxPrice}
-              onChange={(e) => updateFilters({ minPrice: Number(e.target.value) })
+              onChange={(e) =>
+                updateFilters({ minPrice: Number(e.target.value) })
               }
               className={styles.input}
             />
@@ -95,11 +100,10 @@ export const FiltersSidebar = ({ onChange }: Props ) => {
               type="number"
               value={filters.maxPrice}
               min={filters.minPrice}
-              onChange={(e) => 
+              onChange={(e) =>
                 updateFilters({ maxPrice: Number(e.target.value) })
               }
               className={styles.input}
-              placeholder="1000"
             />
           </div>
         </div>
@@ -107,9 +111,12 @@ export const FiltersSidebar = ({ onChange }: Props ) => {
         <div className={styles.priceDisplay}>
           ${filters.minPrice} – ${filters.maxPrice}
         </div>
-        </div>
+      </div>
+
+      {/* AMENITIES */}
       <div className={styles.block}>
         <label className={styles.label}>Amenities</label>
+
         <div className={styles.tagsWrapper}>
           {list.map((a) => (
             <AmenityTag
@@ -121,7 +128,6 @@ export const FiltersSidebar = ({ onChange }: Props ) => {
           ))}
         </div>
       </div>
-
     </aside>
   );
 };

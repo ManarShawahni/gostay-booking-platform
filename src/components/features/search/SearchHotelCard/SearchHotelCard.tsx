@@ -4,7 +4,7 @@ import { SearchHotelResult } from "../../../../types";
 import styles from "./SearchHotelCard.module.css";
 import { MapPinIcon, ShoppingCartIcon, CheckIcon } from "@heroicons/react/24/outline";
 import {useCart} from "../../../../hooks/useCart";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 interface Props {
@@ -13,7 +13,6 @@ interface Props {
 
 export const SearchHotelCard = ({ hotel }: Props) => {
   const navigate = useNavigate();
-  const { search } = useLocation(); 
 
   const { addToCart, isInCart } = useCart();
 
@@ -25,7 +24,8 @@ export const SearchHotelCard = ({ hotel }: Props) => {
       padding="md"
       hover
       className={styles.card}
-      onClick={() => navigate(`/hotel/${hotel.hotelId}${search}`)}
+      onClick={() => navigate(`/hotel/${hotel.hotelId}`)}
+
     >
 
       <button

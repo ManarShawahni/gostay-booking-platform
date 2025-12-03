@@ -17,7 +17,7 @@
 }
 
 .subtitle {
-   color: var(--gray-500);
+   color: var(--white);
    font-size: 1rem;
 }
 
@@ -172,6 +172,13 @@
 
 .skeletonBox {
   border-radius: 20px;
+}
+
+.cardContent,
+.cityName,
+.country,
+.stats {
+  color: white !important;
 }
 
 
