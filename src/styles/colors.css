@@ -4,10 +4,8 @@
   --purple-dark: #A63E87;
   --coral: #FF6B6B;
 
-
   --amber: #FBBF24; 
   --mint: #34D399; 
-
 
   --white: #FFFFFF;
   --offWhite: #FAFAFA;
@@ -21,16 +19,39 @@
   --gray-700: #2D3748;
   --gray-800: #1A202C;
 
-
   --success: #34D399;      
   --warning: #FBBF24;     
   --danger: #DC2626;       
   --info: #3B82F6;         
 
-
   --gradient-main: linear-gradient(135deg, #7C3AED, #FF6B6B);
 
+  --charcoal: #1A202C;
+  --text-dark: #111;
+  --text-gray: #6b7280;
+  --text-light-gray: #9ca3af;
+  --text-medium: #444;
+  --logout-red: #ff4d4d;
+  --border-light: #eee;
+  --bg-light: #f8f9fb;
+  --bg-lighter: #f3f3f3;
+  --bg-very-light: #f7f7f7;
+  --bg-extra-light: #ececec;
+  --bg-placeholder: #fafafa;
+  --text-placeholder: #999;
+  --purple-hover: #c12775;
+  --purple-dark-hover: #b0256d;
+  --danger-light: #ffe3e3;
+  --danger-text: #d33;
 
   --border-default: var(--gray-200);
   --shadow-card: rgba(0, 0, 0, 0.08);
+
+  --chart-blue: #4A6CF7;
+  --chart-green: #00C49F;
+  --chart-orange: #FF8042;
+  --chart-yellow: #FFBB28;
+  --chart-violet: #A55EEA;
+  --chart-red: #FF4D4F;
+
 }

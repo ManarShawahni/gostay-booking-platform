@@ -48,12 +48,12 @@
 }
 
 .clearBtn {
-  padding: 0.7rem 1.3rem;
-  background: #ffe3e3;
-  color: #d33;
-  border-radius: 12px;
-  border: none;
-  font-weight: 600;
+  padding: 0.7rem 1.3rem !important;
+  background: var(--danger-light) !important;
+  color: var(--danger-text) !important;
+  border-radius: 12px !important;
+  border: none !important;
+  font-weight: 600 !important;
   cursor: pointer;
 }
 

@@ -1,6 +1,9 @@
 import styles from "./ConfirmationPage.module.css";
+import { Button } from "../../components/common/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 function ConfirmationPage() {
+  const navigate = useNavigate();
   const success = localStorage.getItem("bookingSuccess");
 
   if (!success) {
@@ -14,12 +17,12 @@ function ConfirmationPage() {
         Your booking has been successfully completed.
       </p>
 
-      <button 
+      <Button 
+        onClick={() => navigate("/")}
         className={styles.backBtn}
-        onClick={() => window.location.href = "/"}
       >
         Back to Home
-      </button>
+      </Button>
     </div>
   );
 }

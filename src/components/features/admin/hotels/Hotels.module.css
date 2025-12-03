@@ -1,0 +1,69 @@
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: var(--purple);
+  color: var(--white);
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s ease;
+  padding: 0;
+}
+
+.iconBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.iconBtn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.deleteBtn {
+  background: var(--danger);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--gray-700);
+}
+
+.textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-200);
+  background: var(--white);
+  font-size: 15px;
+  font-family: inherit;
+  resize: vertical;
+  transition: 0.25s ease;
+}
+
+.textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(201, 87, 161, 0.2);
+  outline: none;
+}

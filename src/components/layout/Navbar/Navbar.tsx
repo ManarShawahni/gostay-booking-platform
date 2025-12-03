@@ -80,9 +80,16 @@ export const Navbar = () => {
                 {items.length > 0 && <span className={styles.badge}>{items.length}</span>}
             </Link>
           {isAuthenticated ? (
-            <div className={styles.iconBtn} onClick={logout}>
-              <ArrowRightOnRectangleIcon className={styles.logout} />
-            </div>
+            <button 
+              type="button"
+              className={styles.logoutBtn} 
+              onClick={() => {
+                logout();
+                navigate("/");
+              }}
+            >
+              <ArrowRightOnRectangleIcon />
+            </button>
           ) : (
             <Link
               to="/login"

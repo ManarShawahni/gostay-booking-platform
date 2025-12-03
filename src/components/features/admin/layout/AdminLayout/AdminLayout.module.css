@@ -1,0 +1,68 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--offWhite);
+  position: relative;
+}
+
+.floatingMenuBtn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: var(--white);
+  color: var(--gray-700);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.floatingMenuBtn:hover {
+  background: var(--gray-100);
+  transform: scale(1.05);
+}
+
+.floatingMenuBtn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.mainArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  transition: margin-left 0.3s ease;
+}
+
+.pageContent {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .mainArea {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+  }
+  
+  .mainArea.sidebarClosed {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .floatingMenuBtn {
+    display: none;
+  }
+}

@@ -1,0 +1,52 @@
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px var(--shadow-card);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--white);
+}
+
+.table thead {
+  background: var(--gray-50);
+}
+
+.table th,
+.table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-default);
+  text-align: left;
+}
+
+.table th {
+  font-weight: 600;
+  color: var(--gray-700);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  color: var(--gray-600);
+}
+
+.table tbody tr:hover {
+  background: var(--gray-50);
+}
+
+.actionsCol {
+  width: 140px;
+}
+
+.empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--gray-500);
+  font-style: italic;
+}

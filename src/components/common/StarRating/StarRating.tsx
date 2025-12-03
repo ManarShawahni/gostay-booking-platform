@@ -2,8 +2,8 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import styles from "./StarRating.module.css";
 
 interface StarRatingProps {
-  rating: number; // 1–5
-  size?: number;  // px size
+  rating: number;
+  size?: number;
 }
 
 export const StarRating = ({ rating, size = 18 }: StarRatingProps) => {

@@ -6,7 +6,7 @@
   border: 1px solid var(--border-default);
   padding: 1rem;
   border-radius: 16px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 14px var(--shadow-card);
 }
 
 .image {
@@ -41,7 +41,7 @@
   height: 34px;
   border: none;
   border-radius: 50%;
-  background: #f7f7f7;
+  background: var(--bg-very-light);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,5 +49,5 @@
 }
 
 .removeBtn:hover {
-  background: #ececec;
+  background: var(--bg-extra-light);
 }

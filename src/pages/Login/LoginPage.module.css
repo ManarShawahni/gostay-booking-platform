@@ -34,7 +34,7 @@
 }
 
 .subtitle {
-  color: #9ca3af;
+  color: var(--text-light-gray);
   font-size: 15px;
   margin-bottom: 28px;
 }

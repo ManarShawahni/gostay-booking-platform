@@ -1,7 +1,7 @@
 .tag {
   padding: 6px 14px;
   border-radius: 20px;
-  background: #f8f9fb;
+  background: var(--bg-light);
   border: 1px solid var(--border-default);
   font-size: 0.85rem;
   cursor: pointer;

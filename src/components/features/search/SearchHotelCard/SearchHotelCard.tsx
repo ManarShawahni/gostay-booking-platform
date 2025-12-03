@@ -31,7 +31,16 @@ export const SearchHotelCard = ({ hotel }: Props) => {
       <button
         className={`${styles.cartBtn} ${added ? styles.added : ""}`}
         disabled={added}
-        onClick={() => addToCart(hotel)}
+        onClick={(e) => {
+          e.stopPropagation()
+          addToCart({
+            hotelId: hotel.hotelId,
+            hotelName: hotel.hotelName,
+            cityName: hotel.cityName,
+            image: hotel.roomPhotoUrl,
+            price: hotel.roomPrice,
+          })
+        }}
       >
         {added ? (
           <CheckIcon className={styles.checkIcon} />

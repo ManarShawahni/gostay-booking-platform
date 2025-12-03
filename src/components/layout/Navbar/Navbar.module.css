@@ -3,7 +3,7 @@
   position: sticky;
   top:0;
   z-index: 1000;
-  background: white;
+  background: var(--white);
   box-shadow: 0 3px 10px rgba(0,0,0,0.06);
   padding: 0.8rem 0;
 }
@@ -28,7 +28,7 @@
 
 .link {
   font-weight: 1000;
-  color: #111;
+  color: var(--text-dark);
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 50px;
@@ -70,15 +70,29 @@
   border: none;
   background-color: var(--white);
   position: relative;
+  transition: none;
 }
 
 .iconBtn:focus {
   outline: none;
 }
 
+.iconBtn:active {
+  transform: none;
+}
 
-.logout {
-  color: #ff4d4d;
+
+.logoutBtn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: black;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .badge {

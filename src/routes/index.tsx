@@ -7,12 +7,17 @@ import SearchResultsPage from '../pages/SearchResults/SearchResultsPage';
 import HotelDetailPage from '../pages/HotelDetailPage/HotelDetailPage';
 import CheckoutPage from '../pages/CheckoutPage/CheckoutPage';
 import ConfirmationPage from '../pages/ConfirmationPage/ConfirmationPage';
-import AdminPage from '../pages/AdminPage';
 import NotFoundPage from '../pages/NotFoundPage';
-import UnauthorizedPage from '../pages/UnauthorizedPage/UnauthorizedPage';
 
 import { ProtectedRoute, RoleProtectedRoute } from "./ProtectedRoutes";
 import CartPage from '../pages/Cart/CartPage';
+
+import {AdminLayout} from "../components/features/admin/layout/AdminLayout/AdminLayout";
+import {AdminDashboard} from "../pages/Admin/AdminDashboard/AdminDashboard";
+import CitiesPage from "../pages/Admin/CitiesPage";
+import HotelsPage from "../pages/Admin/HotelsPage";
+import RoomsPage from "../pages/Admin/RoomsPage";
+
 
 export const router = createBrowserRouter([
   {
@@ -33,7 +38,7 @@ export const router = createBrowserRouter([
         element: <SearchResultsPage />,
       },
       {
-        path: 'hotel/:hotelId',
+        path: 'hotel/:id',
         element: (
           <ProtectedRoute>
             <HotelDetailPage />
@@ -60,19 +65,20 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      {
-        path: 'admin',
-        element: (
-          <RoleProtectedRoute allowedRoles={["Admin"]}>
-            <AdminPage />
-          </RoleProtectedRoute>
-        ),
-      },
-
-       {
-        path: 'unauthorized',
-        element: <UnauthorizedPage />,
-      },
     ],
   },
+      {
+        path: '/admin',
+        element: (
+          <RoleProtectedRoute allowedRoles={["Admin"]}>
+            <AdminLayout />
+          </RoleProtectedRoute>
+        ),
+        children: [
+          { index: true, element: <AdminDashboard/> }, 
+          { path: "cities", element: <CitiesPage /> },
+          { path: "hotels", element: <HotelsPage /> },
+          { path: "rooms", element: <RoomsPage /> },
+        ],
+      },
 ]);
