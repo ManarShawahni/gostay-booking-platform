@@ -1,6 +1,5 @@
 import { useState, ReactNode, useEffect } from "react";
-import { CartContext, CartItem } from "./CartContext";
-import { SearchHotelResult } from "../types";
+import { CartContext, CartItem, AddToCartPayload } from "./CartContext";
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [items, setItems] = useState<CartItem[]>(() => {
@@ -18,22 +17,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem("cart", JSON.stringify(items));
   }, [items]);
 
-  const addToCart = (hotel: SearchHotelResult) => {
-    if (items.some((i) => i.hotelId === hotel.hotelId)) {
+  const addToCart = (item: AddToCartPayload) => {
+    if (items.some((i) => i.hotelId === item.hotelId)) {
       return showToast("Already in your cart!");
     }
     
-    setItems((prev) => [
-      ...prev,
-      {
-        hotelId: hotel.hotelId,
-        hotelName: hotel.hotelName,
-        cityName: hotel.cityName,
-        image: hotel.roomPhotoUrl,
-        price: hotel.roomPrice,
-      },
-    ]);
-
+    setItems((prev) => [...prev, item]);
     showToast("Added to cart!");
   };
 

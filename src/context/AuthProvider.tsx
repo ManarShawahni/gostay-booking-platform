@@ -15,13 +15,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     isAuthenticated: false,
     token: null,
     user: null,
-    loading: false,
+    loading: true,
     error: null,
   });
 
   useEffect(() => {
     const savedToken = localStorage.getItem("authToken") || sessionStorage.getItem("authToken");
-
     const savedUser = localStorage.getItem("authUser") || sessionStorage.getItem("authUser");
 
     if (savedToken && savedUser) {
@@ -32,10 +31,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         loading: false,
         error: null,
       });
+    } else {
+      setState((prev) => ({
+        ...prev,
+        loading: false,
+      }));
     }
   }, []);
 
-  // Login
+
 const login = async (
   credentials: LoginRequest, 
   rememberMe: boolean = false
@@ -85,7 +89,7 @@ const login = async (
     }
   };
 
-  // Logout
+
   const logout = () => {
 
     sessionStorage.removeItem("authToken");

@@ -8,28 +8,28 @@
   font-size: 30px;
   font-weight: 700;
   margin-bottom: 30px;
-  color: #222;
+  color: var(--text-dark);
 }
 
 .message {
   font-size: 18px;
-  color: #444;
+  color: var(--text-medium);
   margin-bottom: 35px;
 }
 
 .backBtn {
-  background: #d63384;
-  color: #fff;
-  padding: 12px 32px;
-  border-radius: 10px;
-  border: none;
-  font-size: 16px;
+  background: var(--purple) !important;
+  color: var(--white) !important;
+  padding: 12px 32px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  font-size: 16px !important;
   cursor: pointer;
   transition: 0.25s ease;
 }
 
 .backBtn:hover {
-  background: #b0256d;
+  background: var(--purple-dark-hover) !important;
   transform: translateY(-1px);
 }
 
@@ -37,5 +37,5 @@
   text-align: center;
   margin-top: 80px;
   font-size: 20px;
-  color: #d00032;
+  color: var(--danger);
 }

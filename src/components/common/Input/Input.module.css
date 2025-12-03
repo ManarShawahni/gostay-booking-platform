@@ -2,8 +2,8 @@
   width: 100%;
   padding: 12px 14px;
   border-radius: 8px;
-  border: 1px solid #E2E8F0;
-  background: #fff;
+  border: 1px solid var(--gray-200);
+  background: var(--white);
   font-size: 15px;
   transition: 0.25s ease;
 }

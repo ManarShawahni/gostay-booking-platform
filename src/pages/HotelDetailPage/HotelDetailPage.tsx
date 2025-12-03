@@ -44,9 +44,6 @@ export default function HotelDetailPage() {
             rooms={rooms || []}
             hotelName={hotel.hotelName}
             cityName={hotel.location}
-            starRating={hotel.starRating}
-            latitude={hotel.latitude}
-            longitude={hotel.longitude}
             checkInDate={checkInDate}
             checkOutDate={checkOutDate}
           />

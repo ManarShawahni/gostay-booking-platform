@@ -1,18 +1,214 @@
 .box {
-  background: #fff;
-  border-radius: 8px;
-  padding: 20px;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 4px 12px var(--shadow-card);
+}
+
+.priceSection {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.priceLabel {
+  font-size: 16px;
+  color: var(--text-gray);
+  font-weight: 500;
+}
+
+.datesSection {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  border: 1px solid #eee;
 }
 
-.btn {
-  background: #000;
-  color: #fff;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
+.dateField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.dateLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.dateIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--text-gray);
+}
+
+.dateValue {
+  padding: 12px 14px;
+  background: var(--gray-50);
+  border-radius: 8px;
+  font-size: 15px;
+  color: var(--charcoal);
+  border: 1px solid var(--border-light);
+}
+
+.dateInput {
+  padding: 12px 14px;
+  background: var(--white);
+  border-radius: 8px;
+  font-size: 15px;
+  color: var(--charcoal);
+  border: 1px solid var(--border-light);
+  width: 100%;
+  font-family: inherit;
   cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.dateInput:hover {
+  border-color: var(--purple);
+}
+
+.dateInput:focus {
+  outline: none;
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(201, 87, 161, 0.1);
+}
+
+.guestTrigger {
+  padding: 12px 14px;
+  background: var(--white);
+  border-radius: 8px;
+  font-size: 15px;
+  color: var(--charcoal);
+  border: 1px solid var(--border-light);
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-family: inherit;
+}
+
+.guestTrigger:hover {
+  border-color: var(--purple);
+}
+
+.guestDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  border: 1px solid var(--border-light);
+}
+
+.guestRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.guestRow:not(:last-child) {
+  border-bottom: 1px solid var(--border-light);
+}
+
+.guestLabel {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--gray-800);
+  margin-bottom: 4px;
+}
+
+.guestSubLabel {
+  font-size: 13px;
+  color: var(--gray-500);
+}
+
+.guestControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.guestBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border-light);
+  background: var(--white);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--gray-700);
+  transition: 0.2s ease;
+}
+
+.guestBtn:hover:not(:disabled) {
+  background: var(--gray-100);
+  border-color: var(--purple);
+  color: var(--purple);
+}
+
+.guestBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.guestCount {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--gray-800);
+  min-width: 24px;
+  text-align: center;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: var(--gray-600);
+}
+
+.summaryRowTotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--charcoal);
+  padding-top: 12px;
+  border-top: 1px solid var(--border-light);
+  margin-top: 4px;
 }

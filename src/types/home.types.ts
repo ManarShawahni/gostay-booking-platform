@@ -22,7 +22,7 @@ export interface FeaturedDealApp {
   starRating: number;
 }
 
-//===========================================
+
 
 export interface RecentHotel {
   hotelId: number;
@@ -45,7 +45,7 @@ export interface RecentHotelApp {
   pricePerNight: number; 
 }
 
-//=========================================
+
 
 
 export interface TrendingDestination {
@@ -65,7 +65,7 @@ export interface TrendingDestinationApp {
   imageUrl: string;
   hotelsCount: number;
 }
-//=========================================
+
 export interface HomeSearchParams {
   checkInDate: string;
   checkOutDate: string;

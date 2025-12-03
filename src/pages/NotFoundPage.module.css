@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.code {
+  font-size: 80px;
+  font-weight: 700;
+  color: var(--purple);
+  margin: 0;
+}
+
+.message {
+  font-size: 20px;
+  color: var(--gray-600);
+  margin: 8px 0 24px;
+}
+
+.link {
+  padding: 10px 24px;
+  background: var(--purple);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.link:hover {
+  opacity: 0.9;
+}

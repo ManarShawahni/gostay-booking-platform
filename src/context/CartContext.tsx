@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import { SearchHotelResult } from "../types";
 
 export interface CartItem {
   hotelId: number;
@@ -7,11 +6,27 @@ export interface CartItem {
   cityName: string;
   image: string;
   price: number;
+  checkInDate?: string;
+  checkOutDate?: string;
+  adults?: number;
+  children?: number;
 }
+
+export type AddToCartPayload = {
+  hotelId: number;
+  hotelName: string;
+  cityName: string;
+  image: string;
+  price: number;
+  checkInDate?: string;
+  checkOutDate?: string;
+  adults?: number;
+  children?: number;
+};
 
 export interface CartContextType {
   items: CartItem[];
-  addToCart: (hotel: SearchHotelResult) => void;
+  addToCart: (item: AddToCartPayload) => void;
   removeFromCart: (hotelId: number) => void;
   clearCart: () => void;
   isInCart: (hotelId: number) => boolean;

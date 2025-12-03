@@ -8,16 +8,15 @@ import { useRecentlyVisited } from '../../../../hooks/home/useRecentlyVisited';
 
 
 export const RecentlyVisited = () => {
-  const { user } = useAuth();
+  const { isAuthenticated } = useAuth();
   const { data: recentHotels, loading } = useRecentlyVisited();
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-
-  if (!user) return null;
+  if (!isAuthenticated) return null;
 
   if (!loading && recentHotels.length === 0) {
-     return null; 
- }
+    return null;
+  }
   
   const toggleCard = (id: string) => {
     setExpandedId(expandedId === id ? null : id);

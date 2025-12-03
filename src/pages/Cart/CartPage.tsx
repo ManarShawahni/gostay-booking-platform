@@ -2,6 +2,7 @@ import { useCart } from "../../hooks/useCart";
 import { CartItem } from "./CartItem";
 import styles from "./CartPage.module.css";
 import { Link } from "react-router-dom";
+import { Button } from "../../components/common/Button/Button";
 
 export default function CartPage() {
   const { items, removeFromCart, clearCart } = useCart();
@@ -32,9 +33,9 @@ export default function CartPage() {
             </p>
 
             <div className={styles.actions}>
-              <button className={styles.clearBtn} onClick={clearCart}>
+              <Button className={styles.clearBtn} onClick={clearCart}>
                 Clear Cart
-              </button>
+              </Button>
 
               <Link to="/checkout" className={styles.checkoutBtn}>
                 Proceed to Checkout
