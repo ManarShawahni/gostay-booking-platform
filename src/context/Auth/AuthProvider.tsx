@@ -90,22 +90,22 @@ const login = async (
   };
 
 
-  const logout = () => {
+const logout = () => {
+  sessionStorage.clear();
+  localStorage.clear();
 
-    sessionStorage.removeItem("authToken");
-    sessionStorage.removeItem("authUser");
+  window.location.replace("/login");
 
-    localStorage.removeItem("authToken");
-    localStorage.removeItem("authUser");
+  setState({
+    isAuthenticated: false,
+    token: null,
+    user: null,
+    loading: false,
+    error: null,
+  });
+};
 
-    setState({
-      isAuthenticated: false,
-      token: null,
-      user: null,
-      loading: false,
-      error: null,
-    });
-  };
+
 
   return (
     <AuthContext.Provider
