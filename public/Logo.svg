@@ -1,0 +1,17 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="48" height="48" rx="12" fill="url(#iconGrad)"/>
+  
+  <!-- Location pin -->
+  <path d="M24 6C17.4 6 12 11.4 12 18C12 27 24 42 24 42C24 42 36 27 36 18C36 11.4 30.6 6 24 6Z" fill="white"/>
+  
+  <!-- Clear G with arrow -->
+  <path d="M24 11C20.14 11 17 14.14 17 18C17 21.86 20.14 25 24 25C25.4 25 26.7 24.58 27.78 23.87V21.5H24V19.5H30V25.1C28.38 26.86 26.32 28 24 28C18.48 28 14 23.52 14 18C14 12.48 18.48 8 24 8C26.96 8 29.6 9.34 31.36 11.46L29.24 13.22C28.02 11.86 26.12 11 24 11Z" fill="url(#iconGrad)"/>
+  
+  <defs>
+    <linearGradient id="iconGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#FF6B6B"/>
+    </linearGradient>
+  </defs>
+</svg>

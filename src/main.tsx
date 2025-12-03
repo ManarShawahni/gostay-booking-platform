@@ -6,8 +6,8 @@ import './index.css';
 import "./styles/colors.css";
 
 
-import { AuthProvider } from './context/AuthProvider';
-import { CartProvider } from './context/CartProvider';
+import { AuthProvider } from './context/Auth/AuthProvider';
+import { CartProvider } from './context/Cart/CartProvider';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

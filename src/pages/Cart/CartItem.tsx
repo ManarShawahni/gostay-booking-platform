@@ -1,5 +1,5 @@
 import styles from "./CartItem.module.css";
-import { CartItem as Item } from "../../context/CartContext";
+import { CartItem as Item } from "../../context/Cart/CartContext";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 interface Props {

@@ -81,6 +81,7 @@ export const SearchWidget: React.FC<Props> =({
     window.location.href = `/search?${queryParams.toString()}`;
   };
 
+
   const updateGuests = (field: 'adults' | 'children' | 'rooms', delta: number) => {
     setSearchParams(prev => ({
       ...prev,
@@ -258,7 +259,7 @@ export const SearchWidget: React.FC<Props> =({
       </div>
 
       {/* SEARCH BUTTON */}
-      <button 
+      <button
         className={styles.searchBtn}
         onClick={handleSearch}
         aria-label="Search hotels"

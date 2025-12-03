@@ -1,13 +1,13 @@
 import { useState, useEffect, ReactNode } from "react";
 import { AuthContext } from "./AuthContext";
-import { authService } from "../services";
+import { authService } from "../../services";
 import {
   LoginRequest,
   AuthState,
   User,
   ApiError,
   LoginResponse
-} from "../types";
+} from "../../types";
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   

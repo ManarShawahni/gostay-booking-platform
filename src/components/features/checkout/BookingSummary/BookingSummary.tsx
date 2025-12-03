@@ -1,4 +1,4 @@
-import { CartItem } from "../../../../context/CartContext";
+import { CartItem } from "../../../../context/Cart/CartContext";
 import styles from "./BookingSummary.module.css";
 
 interface Props {
