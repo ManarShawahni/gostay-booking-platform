@@ -163,7 +163,7 @@ VITE_API_BASE_URL=http://localhost:5000
 ## 📊 Task Management
 
 ### **Linear.app**
-- Each major feature had its own project
+- Each major feature/page had its own project
 - Each project contained detailed tasks
 - GitHub PRs were linked directly to Linear issues
 - Commit messages followed a clear pattern  
@@ -182,7 +182,7 @@ Used to visually present:
 
 Trello acts as the **documentation hub** for understanding the app’s experience.
 
-[Trello project overview](https://trello.com/invite/b/692119de075895ed7d4a5e41/ATTI9435a4d40a1ce07ccadd69bc613a4c53E3AC84C7/gostay-website)
+[Trello project overview](https://trello.com/invite/b/692119de075895ed7d4a5e41/ATTIffa88682431c9c9982dcc19d515c3d0fF664C4F6/gostay-website)
 
 ---
 
