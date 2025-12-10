@@ -5,4 +5,12 @@ export * from "./hotel.types";
 export * from "./booking.types";
 export * from "./auth.types";
 export * from "./error.types";
-export * from "./admin.types";
+export {
+  City,
+  Hotel,
+  RawRoom,
+  Room as AdminRoom,
+  RoomPayload,
+  Reservation
+} from "./admin.types";
+
