@@ -1,0 +1,82 @@
+[
+  {
+    "id": 3,
+    "hotelId": 1,
+    "roomNumber": 103,
+    "roomType": "Executive Suite",
+    "capacityOfAdults": 3,
+    "capacityOfChildren": 2,
+    "price": 350,
+    "availability": false
+  },
+  {
+    "id": 4,
+    "hotelId": 1,
+    "roomNumber": 104,
+    "roomType": "Family Room",
+    "capacityOfAdults": 4,
+    "capacityOfChildren": 3,
+    "price": 400,
+    "availability": true
+  },
+  {
+    "id": 5,
+    "hotelId": 1,
+    "roomNumber": 105,
+    "roomType": "Luxury Suite",
+    "capacityOfAdults": 2,
+    "capacityOfChildren": 1,
+    "price": 500,
+    "availability": true
+  },
+  {
+    "id": 6,
+    "hotelId": 1,
+    "roomNumber": 106,
+    "roomType": "Presidential Suite",
+    "capacityOfAdults": 5,
+    "capacityOfChildren": 3,
+    "price": 1000,
+    "availability": false
+  },
+  {
+    "id": 7,
+    "hotelId": 1,
+    "roomNumber": 107,
+    "roomType": "Standard Room",
+    "capacityOfAdults": 2,
+    "capacityOfChildren": 0,
+    "price": 120,
+    "availability": true
+  },
+  {
+    "id": 8,
+    "hotelId": 1,
+    "roomNumber": 108,
+    "roomType": "Deluxe Room",
+    "capacityOfAdults": 3,
+    "capacityOfChildren": 1,
+    "price": 220,
+    "availability": false
+  },
+  {
+    "id": 9,
+    "hotelId": 1,
+    "roomNumber": 109,
+    "roomType": "Twin Room",
+    "capacityOfAdults": 2,
+    "capacityOfChildren": 1,
+    "price": 180,
+    "availability": true
+  },
+  {
+    "id": 10,
+    "hotelId": 1,
+    "roomNumber": 110,
+    "roomType": "Penthouse Suite",
+    "capacityOfAdults": 6,
+    "capacityOfChildren": 4,
+    "price": 2000,
+    "availability": true
+  }
+]
