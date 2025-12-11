@@ -115,6 +115,13 @@ Server runs at:
 http://localhost:5000
 ```
 
+Create the .env file
+
+Create a .env file in the root of the project and add:
+```
+VITE_API_BASE_URL=http://localhost:5000
+```
+
 ### 3️⃣ Start the frontend
 
 ```
@@ -125,16 +132,6 @@ Frontend runs at:
 
 ```
 http://localhost:5173
-```
-
----
-
-## 🔧 Environment Variables
-
-Your `.env` file should include:
-
-```
-VITE_API_BASE_URL=http://localhost:5000
 ```
 
 ---
